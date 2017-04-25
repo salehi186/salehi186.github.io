@@ -1,0 +1,405 @@
+.App-logo {
+  animation: App-logo-spin infinite 20s linear;
+  height: 80px;
+}
+
+.App-header {
+  background-color: #222;
+  height: 150px;
+  padding: 20px;
+  color: white;
+}
+
+.App-intro {
+  font-size: large;
+}
+
+@keyframes App-logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+body::scrollbar {
+  width: 1em;
+}
+
+body::scrollbar-track {
+  box-shadow: inset 0 0 6px rgba(100, 50, 150, 0.3);
+}
+
+body::scrollbar-thumb {
+  background-color: darkgrey;
+  outline: 1px solid slategrey;
+}
+
+span.icon {
+  font-family: FontAwesome;
+}
+
+@media (min-width: 700px) {
+  .body {
+    overflow: hidden;
+  }
+  .App {
+    display: block;
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    text-align: center;
+    background-color: #E4E4E8;
+    /*position: fixed;
+  height: 100%;
+  width: 100%;*/
+  }
+  .App .mainContainer {
+    padding-left: 200px;
+    height: 100%;
+    display: block;
+    height: 98%;
+    box-sizing: border-box;
+  }
+  .SideBar {
+    width: 200px;
+    height: 100%;
+    display: block;
+    position: fixed;
+    left: 0px;
+    top: 0px;
+  }
+  .SectionWrapper {
+    display: block;
+    position: relative;
+    display: block;
+    height: calc(100% - 35px);
+    overflow-x: hidden;
+  }
+  .SectionWrapper>div {
+    height: 100%;
+  }
+  .Toolbar {
+    background-color: whitesmoke;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+    transition: 0.3s;
+  }
+  .Section {
+    height: calc(100% - 15px);
+    display: block;
+    position: relative;
+  }
+}
+
+@media (max-width: 700px) {
+  .Section {
+    height: 100%;
+    display: block;
+    position: relative;
+  }
+  .SectionWrapper>div {
+    height: 100%;
+    width: 500px;
+  }
+}
+
+
+/*
+----------------------------------------------------------
+Team List Styles
+----------------------------------------------------------
+*/
+
+.TeamList img {
+  width: 100%;
+  margin-bottom: 10px;
+}
+
+.TeamList h3 {
+  margin: 0;
+  padding: 5px 0;
+  font-size: 13px;
+  line-height: 1.1;
+  color: #01BDF2;
+}
+
+.TeamList h4 {
+  margin-top: 0;
+  margin-bottom: 2px;
+  font-size: 10px;
+  color: #fff;
+  text-align: left;
+}
+
+.TeamList .front-detail {
+  width: 90%;
+  background-color: rgba(0, 0, 0, 0.3);
+}
+
+.TeamList .front .front-detail {
+  position: absolute;
+  bottom: 5px;
+}
+
+.TeamList .back .front {
+  text-align: center;
+}
+
+.TeamList .frontWrapper {
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+}
+
+.TeamList .social-icons {
+  position: absolute;
+  bottom: 10px;
+  width: calc(100% - 20px);
+  border-top: 1px solid #DBDBE0;
+  padding-top: 10px;
+}
+
+.TeamList .social-icons a {
+  width: 30px;
+  height: 30px;
+  line-height: 30px;
+  padding: 0;
+  text-align: center;
+  font-size: 15px;
+  color: rgba(255, 255, 255, 0.82);
+}
+
+.TeamList .back .social-icons {
+  background: #01BDF2;
+}
+
+.TeamList .back .social-icons a:hover {
+  color: #fff;
+}
+
+
+/* 
+------------------------------------------------------
+Profile Description
+------------------------------------------------------
+*/
+
+.addressBlock .Card {
+  position: absolute;
+  display: block;
+  top: 0px;
+  width: 100%;
+  height: 100px;
+  background-color: gray;
+}
+
+.addressBlock {
+  text-align: center;
+  display: block;
+  position: relative;
+  border: solid 1px black;
+  width: 94%;
+  margin: 0px 2%;
+}
+
+.ProfileCover span {
+  color: white;
+}
+
+.ProfileCover .about-description {
+  width: 97%;
+  position: absolute;
+  bottom: 0px;
+  text-align: left;
+  padding: 0 20px;
+  left: 0px;
+  font-size: 13px;
+  font-weight: 300;
+  color: rgba(255, 255, 255, 0.53);
+  display: block;
+  text-transform: uppercase;
+  line-height: 25px;
+  padding: 10px;
+}
+
+.ProfileCover {
+  background: linear-gradient(rgba(43, 48, 59, 0.75), rgba(118, 155, 236, 0.75)), url(/images/cover.jpg) no-repeat;
+  background: -webkit-linear-gradient(rgba(43, 48, 59, 0.75), rgba(118, 155, 236, 0.75)), url(/images/cover.jpg) no-repeat;
+  background-size: 100%;
+  height: 250px;
+  position: relative;
+  z-index: 99;
+}
+
+.profileDescription {
+  padding-top:  260px
+}
+
+
+.tab-pane {
+  padding: 10px;
+  background: rgba(248, 249, 251, 0.6);
+  border: 1px solid #DBDBE0;
+  margin-left: 10px;
+  text-align: left;
+}
+
+.tab-pane h3 {
+  margin: 0;
+  padding: 5px 0;
+  font-size: 0.9em;
+  color: #606777;
+  font-family: Montserrat;
+}
+
+.tab-pane h4 {
+  margin-top: 0;
+  margin-bottom: 9px;
+  font-size: 10px;
+}
+
+.tab-pane p {
+  font-size: 13px;
+  line-height: 24px;
+  text-align: justify;
+  position: relative;
+}
+
+
+/*--------------------------------------------------
+----------------------- Resume ---------------------
+---------------------------------------------------*/
+
+.resume-section .resume {
+  margin: 0 0 30px 0;
+  padding: 0;
+  list-style: none;
+}
+
+.resume-section .resume>li {
+  position: relative;
+  margin-bottom: 10px;
+}
+
+.resume-section .resume>li:before,
+.resume-section .resume>li:after {
+  display: table;
+  content: " ";
+}
+
+.resume-section .resume>li:after {
+  clear: both;
+}
+
+.resume-section .resume>li>.timeline-item {
+  margin-top: 0px;
+  background: rgba(248, 249, 251, 0.6);
+  margin-left: 55px;
+  padding: 10px;
+  position: relative;
+  border: 1px solid #DBDBE0;
+}
+
+.resume-section .resume>li>.timeline-item>.timeline-location {
+  float: right;
+  margin: 2px 0 0 0;
+  font-weight: 400;
+  border-radius: 0;
+  font-size: 0.8em;
+  color: #606777;
+  padding: 2px 5px;
+  font-family: Montserrat;
+  text-transform: uppercase;
+}
+
+.resume-section .resume>li>.timeline-item>.timeline-location .fa {
+  margin-right: 5px;
+  font-size: 12px;
+}
+
+.resume-section .resume>li>.timeline-item>.timeline-header {
+  margin: 0;
+  padding: 5px 0;
+  font-size: 0.9em;
+  color: #606777;
+  font-family: Montserrat;
+}
+
+.resume-section .resume>li>.timeline-item>.timeline-header>a {
+  font-weight: 400;
+}
+
+.resume-section .resume>li>.timeline-item>.timeline-body {
+  padding: 2px 0px;
+}
+
+.resume-section .resume>li>.timeline-item>.timeline-body span {
+  font-size: 13px;
+  line-height: 24px;
+  text-align: justify;
+  position: relative;
+  color: #606777;
+  display: inline-block;
+}
+
+.resume-section .resume>li>.resume-tag {
+  width: 45px;
+  height: 100%;
+  font-size: 15px;
+  line-height: 30px;
+  position: absolute;
+  color: rgba(255, 255, 255, 0.82);
+  ;
+  text-align: center;
+  top: 0;
+  
+}
+
+.resume-section .resume>li>.resume-tag .fa {
+  height: 30px;
+  width: 100%;
+  line-height: 30px;
+  background: rgba(0, 0, 0, 0.13);
+}
+
+.resume-section .resume .resume-date {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  background: rgba(0, 0, 0, 0.13);
+}
+
+.resume-section .resume .resume-date span {
+  width: 45px;
+  display: block;
+  font-size: 10px;
+  height: 25px;
+  line-height: 25px;
+}
+
+.resume-section .resume .resume-date .separator {
+  display: block;
+  border-top: 1px solid rgba(255, 255, 255, 0.82);
+  height: 0;
+  margin: 0 auto;
+  width: 25px;
+}
+
+.resume-section .resume h4 {
+  margin-top: 0;
+  margin-bottom: 9px;
+  font-size: 10px;
+}
+
+.resume-section .resume-wrapper {
+  position: relative;
+}
+
+.resume-section .resume > li > .resume-tag {
+    background: #01BDF2;
+}
+
+.resume-section {
+  text-align: left;
+}

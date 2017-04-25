@@ -1,0 +1,130 @@
+.SideBar {
+    background-color: #2b303b;
+    /*width: 200px;*/
+    color: white;
+}
+
+.hs-menu a {
+    color: #788195;
+}
+
+.hs-menu nav {
+    overflow-y: auto;
+    position: relative;
+    top: 10px;
+    left: 0px;
+    right: 0px;
+    bottom: 40px;
+    margin-top: 7px;
+}
+
+.hs-menu nav .active-sec .menu_name {
+    color: #fff;
+    transition: all .2s ease;
+}
+
+.hs-menu nav .active-sec .fa {
+    color: #fff;
+    transition: all .2s ease;
+}
+
+.hs-menu nav a {
+    display: block;
+    padding: 3px 5px;
+    outline: none;
+    width: 170px;
+    text-decoration: none;
+    transition: all .2s ease;
+}
+
+.hs-menu nav a:hover {
+    color: #fff;
+    transition: all .2s ease;
+}
+
+.hs-menu nav a:hover .fa {
+    background: #788195;
+    color: #2b303b;
+    transition: all .2s ease;
+}
+
+.hs-menu nav a .menu_name {
+    font-size: 13px;
+    font-weight: 400;
+    line-height: 40px;
+    font-family: Montserrat;
+}
+
+.hs-menu nav a .fa {
+    font-size: 21px;
+    width: 40px;
+    display: inline-block;
+    height: 40px;
+    line-height: 40px;
+    text-align: center;
+    background: #21252d;
+    color: #788195;
+    position: relative;
+    left: 0;
+    float: right;
+}
+
+.hs-menu .separator-aside {
+    display: block;
+    border-top: 1px solid #606777;
+    height: 0;
+    margin: 25px 0;
+    margin-left: auto;
+    margin-right: auto;
+    width: 70px;
+    opacity: 0.4;
+}
+
+.hs-menu .aside-footer {
+    position: absolute;
+    bottom: 0;
+    height: 40px;
+    width: 100%;
+    line-height: 44px;
+    text-align: center;
+    background: #262A34;
+}
+
+.hs-menu .aside-footer a {
+    width: 25px;
+    height: 25px;
+    line-height: 26px;
+    padding: 0;
+    text-align: center;
+    font-size: 14px;
+    margin: 0 2px;
+    background: #2b303b;
+    display: inline-block;
+    -webkit-transition: all .3s ease-in;
+    -moz-transition: all .3s ease-in;
+    -o-transition: all .3s ease-in;
+    transition: all .3s ease-in;
+}
+
+.hs-menu .aside-footer a:hover {
+    color: #fff;
+}
+
+.fa {
+    display: inline-block;
+    font: normal normal normal 14px/1 FontAwesome;
+    font-style: normal;
+    font-variant-ligatures: normal;
+    font-variant-caps: normal;
+    font-variant-numeric: normal;
+    font-weight: normal;
+    font-stretch: normal;
+    font-size: inherit;
+    line-height: 1;
+    font-family: FontAwesome;
+    font-size: inherit;
+    text-rendering: auto;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    transform: translate(0, 0);
+}
