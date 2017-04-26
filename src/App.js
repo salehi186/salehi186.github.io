@@ -67,73 +67,79 @@ class App extends Component {
             }
         ];
         this.timeline = {
-            educations: [
-                // {title:"", description:"", startDate:"", endDate:"", college:{
-                // name:"safahan", website:"", address:"", location:""} }
-                {
-                    title: "COMPUTER ENGINEERING - BS",
-                    description: "",
-                    startDate: "2006",
-                    endDate: "2008",
-                    college: {
-                        name: "Safahan Institute Of Higher Education",
-                        website: "",
-                        address: "ESFAHAN, IRAN",
-                        location: ""
-                    }
-                }, {
-                    title: "COMPUTER SIENCE - Associates Degree",
-                    description: "",
-                    startDate: "2002",
-                    endDate: "2004",
-                    college: {
-                        name: "University of Applied Science and Technology",
-                        website: "",
-                        address: "ESFAHAN, IRAN",
-                        location: ""
-                    }
-                }
+            educations: {
+                icon: "fa-graduation-cap",
+                items: [
+                    // {title:"", description:"", startDate:"", endDate:"", college:{
+                    // name:"safahan", website:"", address:"", location:""} }
+                    {
+                        title: "COMPUTER ENGINEERING - BS",
+                        description: "",
+                        startDate: "2006",
+                        endDate: "2008",
 
-            ],
-            jobs: [
-                // {title:"", description:"", startDate:"", endDate:"", company:{ name:"MSC",
-                // website:"", address:"", location:""} }
-                {
-                    title: "SENIOR WEB DEVELOPER",
-                    description: "ASP.NET Pages, C#, SQL Server, Reporting Services, JavaScript, HTML5, CSS3, Boot" +
-                            "Strap, Backbonejs ,...",
-                    startDate: "2012",
-                    endDate: "Now",
-                    company: {
+                        name: "Safahan Institute Of Higher Education",
+                        website: null,
+                        address: "ESFAHAN, IRAN",
+                        location: ""
+
+                    }, {
+                        title: "COMPUTER SIENCE - Associates Degree",
+                        description: "",
+                        startDate: "2002",
+                        endDate: "2004",
+
+                        name: "University of Applied Science and Technology",
+                        website: null,
+                        address: "ESFAHAN, IRAN",
+                        location: ""
+
+                    }
+
+                ]
+            },
+            "JOBS AND EXPERIENCE": {
+                icon: "fa-briefcase",
+                items: [
+                    // {title:"", description:"", startDate:"", endDate:"", company:{ name:"MSC",
+                    // website:"", address:"", location:""} }
+                    {
+                        title: "SENIOR WEB DEVELOPER",
+                        description: "ASP.NET Pages, C#, SQL Server, Reporting Services, JavaScript, HTML5, CSS3, Boot" +
+                                "Strap, Backbonejs ,...",
+                        startDate: "2012",
+                        endDate: "Now",
+
                         name: "MOBARAKE STEEL COMPANY (MSC)",
                         website: "http://en.msc.ir/",
                         address: "ESFAHAN , IRAN",
                         location: ""
-                    }
-                }, {
-                    title: "WEB DEVELOPER, PROGRAMMER",
-                    description: "ASP.NET , SQL Server,...",
-                    startDate: "2009",
-                    endDate: "2012",
-                    company: {
+
+                    }, {
+                        title: "WEB DEVELOPER, PROGRAMMER",
+                        description: "ASP.NET , SQL Server,...",
+                        startDate: "2009",
+                        endDate: "2012",
+
                         name: "International Systems Engineering & Automation Company (IRISA)",
                         website: "http://www.irisaco.com/irisa-en/",
                         address: "ESFAHAN , IRAN",
                         location: ""
-                    }
-                }, {
-                    title: "FRONT-END DEVELOPER",
-                    description: "JavaScript, HTML, CSS, ASP.NET",
-                    startDate: "2009",
-                    endDate: "2009",
-                    company: {
+
+                    }, {
+                        title: "FRONT-END DEVELOPER",
+                        description: "JavaScript, HTML, CSS, ASP.NET",
+                        startDate: "2009",
+                        endDate: "2009",
+
                         name: "Decision Makers Information Systems (DEMIS)",
                         website: "http://www.demisco.com/",
                         address: "ESFAHAN , IRAN",
                         location: ""
+
                     }
-                }
-            ]
+                ]
+            }
         };
 
     }
@@ -160,107 +166,56 @@ class App extends Component {
                     <SectionWrapper>
 
                         <Section Id="section3" Name="section3" className="resume-section">
+
                             <div className="resume-section">
+
                                 <ul className="resume">
-                                    <li className="time-label">
-                                        <span className="content-title">EDUCATION</span>
-                                    </li>
-                                    {   this.timeline.educations.map((itm,idx) => {
-                                            return <li key={"education"+idx}>
-                                                <div className="resume-tag">
-                                                    <span className="fa fa-graduation-cap"></span>
-                                                    <div className="resume-date">
-                                                        <span>{itm.startDate}</span>
-                                                        <div className="separator"></div>
-                                                        <span>{itm.endDate}</span>
-                                                    </div>
-                                                </div>
-                                                <div className="timeline-item">
-                                                    <span className="timeline-location">
-                                                        <i className="fa fa-map-marker"></i>{itm.college.address}</span>
-                                                    <h3 className="timeline-header">{itm.title}</h3>
-                                                    <div className="timeline-body">
-                                                        <h4>{itm.college.name}</h4>
-                                                        <span></span>
-                                                    </div>
-                                                </div>
-                                            </li>;
+
+                                    {Object
+                                        .keys(this.timeline)
+                                        .map((p) => {
+                                            let r = this
+                                                .timeline[p].items
+                                                .map((itm, idx) => {
+                                                    return <li key={p + idx}>
+                                                        <div className="resume-tag">
+                                                            <span className={"fa "+this.timeline[p].icon}></span>
+                                                            <div className="resume-date">
+                                                                <span>{itm.startDate }</span>
+                                                                <div className="separator"></div>
+                                                                <span>{itm.endDate}</span>
+                                                            </div>
+                                                        </div>
+                                                        <div className="timeline-item">
+                                                            <span className="timeline-location">
+                                                                <i className="fa-map-marker"></i>{itm.address}</span>
+                                                            <h3 className="timeline-header">{itm.title}</h3>
+                                                            <div className="timeline-body">
+                                                                <h4>
+                                                                    <a
+                                                                        href={itm.website || "#"}
+                                                                        target={itm.website
+                                                                        ? "_blank"
+                                                                        : ""}>
+                                                                        {itm.name}
+                                                                    </a>
+
+                                                                </h4>
+                                                                <span>{itm.description}</span>
+                                                                <p>wow</p>
+                                                            </div>
+                                                        </div>
+                                                    </li>;
+
+                                                });
+                                            r.unshift(
+                                                <li className="time-label" key={p}>
+                                                    <span className="content-title">{p}</span>
+                                                </li>
+                                            );
+                                            return r;
 
                                         })}
-
-                                    <li className="time-label">
-                                        <span className="content-title">JOBS AND EXPERIENCE</span>
-                                    </li>
-                                    <li>
-                                        <div className="resume-tag">
-                                            <span className="fa fa-briefcase"></span>
-                                            <div className="resume-date">
-                                                <span>2012</span>
-                                                <div className="separator"></div>
-                                                <span>Now
-                                                </span>
-                                            </div>
-                                        </div>
-                                        <div className="timeline-item">
-                                            <span className="timeline-location">
-                                                <i className="fa fa-map-marker"></i>ESFAHAN , IRAN</span>
-                                            <h3 className="timeline-header">SENIOR WEB DEVELOPER</h3>
-                                            <div className="timeline-body">
-                                                <h4>
-                                                    <a href="http://en.msc.ir/" target="_blank">MOBARAKE STEEL COMPANY
-                                                    </a>
-                                                </h4>
-                                                <span>ASP.NET Pages, C#, SQL Server, Reporting Services, JavaScript, HTML5,
-                                                    CSS3, BootStrap, Backbonejs ,...
-                                                </span>
-                                    
-                                            </div>
-                                        </div>
-                                    </li>
-                                    <li>
-                                        <div className="resume-tag">
-                                            <span className="fa fa-briefcase"></span>
-                                            <div className="resume-date">
-                                                <span>2012</span>
-                                                <div className="separator"></div>
-                                                <span>2009</span>
-                                            </div>
-                                        </div>
-                                        <div className="timeline-item">
-                                            <span className="timeline-location">
-                                                <i className="fa fa-map-marker"></i>ESFAHAN , IRAN</span>
-                                            <h3 className="timeline-header">UI/UX DESIGNER, PROGRAMMER</h3>
-                                            <div className="timeline-body">
-                                                <h4>
-                                                    <a href="http://www.irisaco.com/irisa-en/" target="_blank">International Systems Engineering &amp; Automation Company (IRISA)</a>
-                                                </h4>
-                                                <span>ASP.NET , SQL Server</span>
-                                            </div>
-                                        </div>
-                                    </li>
-
-                                    <li>
-                                        <div className="resume-tag">
-                                            <span className="fa fa-briefcase"></span>
-                                            <div className="resume-date">
-                                                <span>2009</span>
-                                                <div className="separator"></div>
-                                                <span>2010</span>
-                                            </div>
-                                        </div>
-                                        <div className="timeline-item">
-                                            <span className="timeline-location">
-                                                <i className="fa fa-map-marker"></i>ESFAHAN , IRAN</span>
-                                            <h3 className="timeline-header">FRONT-END DEVELOPER</h3>
-                                            <div className="timeline-body">
-                                                <h4>
-                                                    <a href="http://www.demisco.com/" target="_blank">Decision Makers Information Systems (DEMIS)</a>
-                                                </h4>
-                                                <span>JavaScript, HTML, CSS, ASP.NET</span>
-
-                                            </div>
-                                        </div>
-                                    </li>
 
                                 </ul>
                             </div>
