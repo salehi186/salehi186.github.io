@@ -10,7 +10,7 @@ import Maps from './Map/Map.js';
 import Marquee from './Marquee/Marquee';
 import {guid} from './helpers';
 
-class App extends Component {
+export default class App extends Component {
 
     constructor() {
         super();
@@ -142,6 +142,69 @@ class App extends Component {
             }
         };
 
+        this.skills = [
+            {
+                title: "BACK END",
+                description: "Programming , Windows Application, Network Socket Programming , ...",
+                tags: {
+                    "C#": 95,
+                    ".NET Framework": 95,
+                    "ASP.NET": 98,
+                    "ADO.NET": 100,
+                    "Entity Framework": 95,
+                    "WCF": 95,
+                    "Web API": 80
+                }
+
+            }, {
+                title: "FRONT END",
+                description: "Website design and using latest framework",
+                tags: {
+                    "HTML5": 98,
+                    "CSS3": 98,
+                    "JavaScript": 98,
+                    "REACT": 80,
+                    "Angularjs 1.1": 70,
+                    "Jquery": 95,
+                    "Backbonejs": 90,
+                    "photoShop": 70,
+                    "Firework": 70,
+                    "Flash": 70
+                }
+            }, {
+                title: "OS, Web Servers & Office SKILLS",
+                description: "Good understanding of windows and .net framework (registry ,filesystem, security" +
+                        ",...) and familiar with linux (shell command, ssh ,nfs sharing ,LVM ,Raid",
+                tags: {
+                    "Windows": 90,
+                    ".Net": 90,
+                    "FrameWork": 90,
+                    "IIS": 90,
+                    "Ms Office": 85,
+                    "Linux": 70,
+                    "Debian": 60,
+                    "Apache": 60
+                }
+            }, {
+                title: "Source Versioning Control",
+                description: "Good understanding of windows and .net framework (registry ,filesystem, security" +
+                        ",...) and familiar with linux (shell command, ssh ,nfs sharing ,LVM ,Raid",
+                tags: {
+                    "GIT": 80,
+                    "SVN": 98,
+                    "TFS": 50
+                }
+            }, {
+                title: "LANGUAGES",
+                description: "Communication skills  (Writing, Reading, Speaking, Listening)",
+                tags: {
+                    "English": 70,
+                    "GERMAN": 40,
+                    "FARSI": 100
+                }
+            }
+
+        ];
     }
 
     clickbtn(show) {
@@ -165,6 +228,41 @@ class App extends Component {
                     <Toolbar/>
                     <SectionWrapper>
 
+                        <Section Id="section4" Name="section4">
+                            <div className="skillContainer">
+                                {this
+                                    .skills
+                                    .map((itm) => <div className="skillWrapper">
+                                        <h3 className="skillTitle">
+                                            {itm.title}
+                                        </h3>
+                                        <div className="skill">
+                                            <h4>
+                                                {itm.description}</h4>
+                                            <ul>
+                                                {Object
+                                                    .keys(itm.tags)
+                                                    .map((t) => <li >
+                                                        <div
+                                                            className="progress"
+                                                            style={{
+                                                            width: itm.tags[t] + "%"
+                                                        }}>
+                                                            <span className="progressText">
+                                                                {t}</span>
+                                                            <span className="percentage">
+                                                                {itm.tags[t] + "%"}</span>
+                                                        </div>
+
+                                                    </li>)}
+                                            </ul>
+                                        </div>
+
+                                    </div>)}
+                            </div>
+
+                        </Section>
+
                         <Section Id="section3" Name="section3" className="resume-section">
 
                             <div className="resume-section">
@@ -175,13 +273,14 @@ class App extends Component {
                                         .keys(this.timeline)
                                         .map((p) => {
                                             let r = this
-                                                .timeline[p].items
+                                                .timeline[p]
+                                                .items
                                                 .map((itm, idx) => {
                                                     return <li key={p + idx}>
                                                         <div className="resume-tag">
-                                                            <span className={"fa "+this.timeline[p].icon}></span>
+                                                            <span className={"fa " + this.timeline[p].icon}></span>
                                                             <div className="resume-date">
-                                                                <span>{itm.startDate }</span>
+                                                                <span>{itm.startDate}</span>
                                                                 <div className="separator"></div>
                                                                 <span>{itm.endDate}</span>
                                                             </div>
@@ -344,16 +443,12 @@ class App extends Component {
                                 </div>
                             </div>
                         </Section>
-                        <Section Id="section4" Name="section4"/>
                         <Section Id="section5" Name="section5"/>
                         <Section Id="section6" Name="section6"/>
 
                     </SectionWrapper>
                 </div>
             </div>
-
         );
     }
 }
-
-export default App;
