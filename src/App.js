@@ -228,7 +228,30 @@ export default class App extends Component {
                     <Toolbar/>
                     <SectionWrapper>
 
-                        <Section Id="section4" Name="section4">
+                        <Section Id="section5" Name="ContactSection">
+                        
+                        
+                                <div class="contact_info">
+                                    <h3>Get in touch</h3>
+                                    <hr/>
+                                    <h5>I am waiting to assist you</h5>
+                                    <h6>Send me Email to get in touch</h6>
+
+                                    <hr/>
+                                </div>
+                                <fieldset id="contact_form">
+                                    <div id="result"></div>
+                                    <a href="mailto:salehi186@gmail.com" target="_blank">
+                                        <span className="submit_btn" id="submit_btn">
+                                            Send message to salehi186@gmail.com
+                                        </span>
+                                    </a>
+                                </fieldset>
+                        </Section>
+
+
+
+                        <Section Id="section4" Name="SkillSection">
                             <div className="skillContainer">
                                 {this
                                     .skills
@@ -263,7 +286,7 @@ export default class App extends Component {
 
                         </Section>
 
-                        <Section Id="section3" Name="section3" className="resume-section">
+                        <Section Id="section3" Name="resumeSection" className="resume-section">
 
                             <div className="resume-section">
 
@@ -443,8 +466,6 @@ export default class App extends Component {
                                 </div>
                             </div>
                         </Section>
-                        <Section Id="section5" Name="section5"/>
-                        <Section Id="section6" Name="section6"/>
 
                     </SectionWrapper>
                 </div>
