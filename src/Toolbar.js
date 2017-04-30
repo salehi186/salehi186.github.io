@@ -6,14 +6,14 @@ class Toolbar extends Component {
     render() {
         return <nav className="Toolbar">
             <ul>
-                <li className="ToolbarItem button">
+                <li className="ToolbarItem button" onClick={this.props.home}>
                     <a className=" fa fa-home"></a>
                 </li>
-                <li className="ToolbarItem button">
+                <li className="ToolbarItem button" onClick={this.props.back}>
                     <a className=" fa fa-chevron-left"></a>
                 </li>
 
-                <li className="ToolbarItem button">
+                <li className="ToolbarItem button" onClick={this.props.next}>
                     <a className="fa fa-chevron-right"></a>
                 </li>
 
@@ -31,9 +31,13 @@ class Toolbar extends Component {
             }}></span>
             RECENT ACTIVITY:
             <Marquee>
-                <span > salam  divuneh...</span>
-                <span > this is a test Text... </span>
-                <span > How are you?....</span>
+                <span >
+                    salam divuneh...</span>
+                <span >
+                    this is a test Text...
+                </span>
+                <span >
+                    How are you?....</span>
 
             </Marquee>
 

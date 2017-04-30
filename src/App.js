@@ -2,7 +2,6 @@ import React, {Component} from 'react';
 import Sidebar from './SideBar/SideBar';
 import './App.css';
 import Section from './Section';
-import SectionWrapper from './SectionWrapper';
 import Toolbar from './Toolbar';
 import Card from './Card/Card';
 import FlipCard from './Card/FlipCard';
@@ -177,8 +176,7 @@ export default class App extends Component {
                         ",...) and familiar with linux (shell command, ssh ,nfs sharing ,LVM ,Raid",
                 tags: {
                     "Windows": 90,
-                    ".Net": 90,
-                    "FrameWork": 90,
+                    ".Net FrameWork": 90,
                     "IIS": 90,
                     "Ms Office": 85,
                     "Linux": 70,
@@ -205,6 +203,42 @@ export default class App extends Component {
             }
 
         ];
+        this.viewManager = {
+            views: [
+                "ProfileSection", "resumeSection", "TeamSection", "SkillSection", "ContactSection"
+            ],
+            currentViewIndex: 0
+        };
+
+    }
+
+    /**
+ *
+ * @param {*} state
+ * null >> next view
+ * -1 >> previous view
+ * string >> move to specific view
+ */
+    changeView(state) {
+        if (!state) {
+            if (this.viewManager.currentViewIndex < this.viewManager.views.length - 1) 
+                ++this.viewManager.currentViewIndex;
+            else 
+                this.viewManager.currentViewIndex = 0;
+
+            }
+        else if (state == -1) {
+            if (this.viewManager.currentViewIndex > 0) 
+                --this.viewManager.currentViewIndex;
+            else 
+                this.viewManager.currentViewIndex = this.viewManager.views.length - 1;
+            }
+        else  {
+          this.viewManager.currentViewIndex =this.viewManager.views.findIndex(state);
+
+        }
+
+        window.location= window.location.toString().split('#')[0]+"#"+this.viewManager.views[this.viewManager.currentViewIndex];
     }
 
     clickbtn(show) {
@@ -218,6 +252,8 @@ export default class App extends Component {
 
         }
     
+    changeStatus() {}
+
     render() {
 
         return (
@@ -225,163 +261,11 @@ export default class App extends Component {
 
                 <Sidebar/>
                 <div className="mainContainer">
-                    <Toolbar/>
-                    <SectionWrapper>
-
-                        <Section Id="section5" Name="ContactSection">
-                        
-                        
-                                <div class="contact_info">
-                                    <h3>Get in touch</h3>
-                                    <hr/>
-                                    <h5>I am waiting to assist you</h5>
-                                    <h6>Send me Email to get in touch</h6>
-
-                                    <hr/>
-                                </div>
-                                <fieldset id="contact_form">
-                                    <div id="result"></div>
-                                    <a href="mailto:salehi186@gmail.com" target="_blank">
-                                        <span className="submit_btn" id="submit_btn">
-                                            Send message to salehi186@gmail.com
-                                        </span>
-                                    </a>
-                                </fieldset>
-                        </Section>
-
-
-
-                        <Section Id="section4" Name="SkillSection">
-                            <div className="skillContainer">
-                                {this
-                                    .skills
-                                    .map((itm) => <div className="skillWrapper">
-                                        <h3 className="skillTitle">
-                                            {itm.title}
-                                        </h3>
-                                        <div className="skill">
-                                            <h4>
-                                                {itm.description}</h4>
-                                            <ul>
-                                                {Object
-                                                    .keys(itm.tags)
-                                                    .map((t) => <li >
-                                                        <div
-                                                            className="progress"
-                                                            style={{
-                                                            width: itm.tags[t] + "%"
-                                                        }}>
-                                                            <span className="progressText">
-                                                                {t}</span>
-                                                            <span className="percentage">
-                                                                {itm.tags[t] + "%"}</span>
-                                                        </div>
-
-                                                    </li>)}
-                                            </ul>
-                                        </div>
-
-                                    </div>)}
-                            </div>
-
-                        </Section>
-
-                        <Section Id="section3" Name="resumeSection" className="resume-section">
-
-                            <div className="resume-section">
-
-                                <ul className="resume">
-
-                                    {Object
-                                        .keys(this.timeline)
-                                        .map((p) => {
-                                            let r = this
-                                                .timeline[p]
-                                                .items
-                                                .map((itm, idx) => {
-                                                    return <li key={p + idx}>
-                                                        <div className="resume-tag">
-                                                            <span className={"fa " + this.timeline[p].icon}></span>
-                                                            <div className="resume-date">
-                                                                <span>{itm.startDate}</span>
-                                                                <div className="separator"></div>
-                                                                <span>{itm.endDate}</span>
-                                                            </div>
-                                                        </div>
-                                                        <div className="timeline-item">
-                                                            <span className="timeline-location">
-                                                                <i className="fa-map-marker"></i>{itm.address}</span>
-                                                            <h3 className="timeline-header">{itm.title}</h3>
-                                                            <div className="timeline-body">
-                                                                <h4>
-                                                                    <a
-                                                                        href={itm.website || "#"}
-                                                                        target={itm.website
-                                                                        ? "_blank"
-                                                                        : ""}>
-                                                                        {itm.name}
-                                                                    </a>
-
-                                                                </h4>
-                                                                <span>{itm.description}</span>
-                                                                <p>wow</p>
-                                                            </div>
-                                                        </div>
-                                                    </li>;
-
-                                                });
-                                            r.unshift(
-                                                <li className="time-label" key={p}>
-                                                    <span className="content-title">{p}</span>
-                                                </li>
-                                            );
-                                            return r;
-
-                                        })}
-
-                                </ul>
-                            </div>
-                        </Section>
-
-                        <Section Id="section1" Name="TeamSection">
-                            <span className="fa fa-users"></span>
-                            <hr width="90%"/>
-                            <div className="TeamList">
-                                {this
-                                    .friends
-                                    .map((p) => <FlipCard InboxAnimation={true} Width="49%" Height="245px" key={guid()}>
-                                        <Card ShowAnimation="flipInX" HideAnimation="flipOutX" baseClass="front">
-                                            <div
-                                                className="frontWrapper"
-                                                style={{
-                                                backgroundImage: "url('" + p.imageURL + "')",
-                                                width: "100%",
-                                                height: "100%"
-                                            }}>
-                                                <div className="front-detail">
-                                                    <h4>{p.Name}</h4>
-                                                    <h3>{p.job}</h3>
-                                                </div>
-                                            </div>
-                                        </Card>
-                                        <Card ShowAnimation="flipInX" HideAnimation="flipOutX" baseClass="back">
-                                            <p>{p.Description}
-                                            </p>
-                                            <div className="social-icons">
-                                                <a href={p.linkedin} target="_blank">
-                                                    <span className="fa fa-linkedin"></span>
-                                                </a>
-                                                &nbsp;&nbsp;
-                                                <a href={p.facebook}>
-                                                    <span className="fa fa-facebook"></span>
-                                                </a>
-                                            </div>
-                                        </Card>
-                                    </FlipCard>)}
-                            </div>
-
-                        </Section>
-                        <Section Id="section2" Name="ProfileSection">
+                    <Toolbar next={this.changeStatus.bind(this)} back={this.changeStatus.bind(this,[-1])}
+                    home={this.changeStatus.bind(this,["ProfileSection"])}
+                     />
+                    <div className="SectionWrapper">
+                        <Section Id="ProfileSection" Name="ProfileSection">
                             <span className="fa fa-address-card-o"></span>
                             <hr width="90%"/>
                             <div className="profileContainer">
@@ -467,7 +351,158 @@ export default class App extends Component {
                             </div>
                         </Section>
 
-                    </SectionWrapper>
+                        <Section Id="SkillSection" Name="SkillSection">
+                            <div className="skillContainer">
+                                {this
+                                    .skills
+                                    .map((itm ,itmIdx) => <div key={itmIdx} className="skillWrapper">
+                                        <h3 className="skillTitle">
+                                            {itm.title}
+                                        </h3>
+                                        <div className="skill">
+                                            <h4>
+                                                {itm.description}</h4>
+                                            <ul>
+                                                {Object
+                                                    .keys(itm.tags)
+                                                    .map((t,idx) => <li key={idx} >
+                                                        <div
+                                                            className="progress"
+                                                            style={{
+                                                            width: itm.tags[t] + "%"
+                                                        }}>
+                                                            <span className="progressText">
+                                                                {t}</span>
+                                                            <span className="percentage">
+                                                                {itm.tags[t] + "%"}</span>
+                                                        </div>
+
+                                                    </li>)}
+                                            </ul>
+                                        </div>
+
+                                    </div>)}
+                            </div>
+
+                        </Section>
+
+                        <Section Id="resumeSection" Name="resumeSection" className="resume-section">
+
+                            <div className="resume-section">
+
+                                <ul className="resume">
+
+                                    {Object
+                                        .keys(this.timeline)
+                                        .map((p) => {
+                                            let r = this
+                                                .timeline[p]
+                                                .items
+                                                .map((itm, idx) => {
+                                                    return <li key={p + idx}>
+                                                        <div className="resume-tag">
+                                                            <span className={"fa " + this.timeline[p].icon}></span>
+                                                            <div className="resume-date">
+                                                                <span>{itm.startDate}</span>
+                                                                <div className="separator"></div>
+                                                                <span>{itm.endDate}</span>
+                                                            </div>
+                                                        </div>
+                                                        <div className="timeline-item">
+                                                            <span className="timeline-location">
+                                                                <i className="fa-map-marker"></i>{itm.address}</span>
+                                                            <h3 className="timeline-header">{itm.title}</h3>
+                                                            <div className="timeline-body">
+                                                                <h4>
+                                                                    <a
+                                                                        href={itm.website || "#"}
+                                                                        target={itm.website
+                                                                        ? "_blank"
+                                                                        : ""}>
+                                                                        {itm.name}
+                                                                    </a>
+
+                                                                </h4>
+                                                                <span>{itm.description}</span>
+                                                                <p>wow</p>
+                                                            </div>
+                                                        </div>
+                                                    </li>;
+
+                                                });
+                                            r.unshift(
+                                                <li className="time-label" key={p}>
+                                                    <span className="content-title">{p}</span>
+                                                </li>
+                                            );
+                                            return r;
+
+                                        })}
+
+                                </ul>
+                            </div>
+                        </Section>
+
+                        <Section Id="TeamSection" Name="TeamSection">
+                            <span className="fa fa-users"></span>
+                            <hr width="90%"/>
+                            <div className="TeamList">
+                                {this
+                                    .friends
+                                    .map((p) => <FlipCard InboxAnimation={true} Width="49%" Height="245px" key={guid()}>
+                                        <Card ShowAnimation="flipInX" HideAnimation="flipOutX" baseClass="front">
+                                            <div
+                                                className="frontWrapper"
+                                                style={{
+                                                backgroundImage: "url('" + p.imageURL + "')",
+                                                width: "100%",
+                                                height: "100%"
+                                            }}>
+                                                <div className="front-detail">
+                                                    <h4>{p.Name}</h4>
+                                                    <h3>{p.job}</h3>
+                                                </div>
+                                            </div>
+                                        </Card>
+                                        <Card ShowAnimation="flipInX" HideAnimation="flipOutX" baseClass="back">
+                                            <p>{p.Description}
+                                            </p>
+                                            <div className="social-icons">
+                                                <a href={p.linkedin} target="_blank">
+                                                    <span className="fa fa-linkedin"></span>
+                                                </a>
+                                                &nbsp;&nbsp;
+                                                <a href={p.facebook}>
+                                                    <span className="fa fa-facebook"></span>
+                                                </a>
+                                            </div>
+                                        </Card>
+                                    </FlipCard>)}
+                            </div>
+
+                        </Section>
+
+                        <Section Id="ContactSection" Name="ContactSection">
+
+                            <div class="contact_info">
+                                <h3>Get in touch</h3>
+                                <hr/>
+                                <h5>I am waiting to assist you</h5>
+                                <h6>Send me Email to get in touch</h6>
+
+                                <hr/>
+                            </div>
+                            <fieldset id="contact_form">
+                                <div id="result"></div>
+                                <a href="mailto:salehi186@gmail.com" target="_blank">
+                                    <span className="submit_btn" id="submit_btn">
+                                        Send message to salehi186@gmail.com
+                                    </span>
+                                </a>
+                            </fieldset>
+                        </Section>
+
+                    </div>
                 </div>
             </div>
         );
