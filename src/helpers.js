@@ -26,12 +26,13 @@ function callbackAnimate(timestamp) {
         this.startTime = timestamp;
     var runtime = timestamp - this.startTime;
     //var progress = runtime / this.duration
-    if (runtime < this.duration){ 
-        window.requestAnimationFrame(callbackAnimate.bind(this));
-        this.fn.call(this.self,runtime);
+    if (runtime < this.duration) {
+        if (!this.fn.call(this.self, Math.floor(runtime))) 
+            window.requestAnimationFrame(callbackAnimate.bind(this));
+
+        }
     }
-}
 export function animate(callback, duration) {
 
-    window.requestAnimationFrame(callbackAnimate.bind({fn: callback, startAt: null, duration,self:this}));
+    window.requestAnimationFrame(callbackAnimate.bind({fn: callback, startAt: null, duration, self: this}));
 }

@@ -31,13 +31,9 @@ class Toolbar extends Component {
             }}></span>
             RECENT ACTIVITY:
             <Marquee>
-                <span >
-                    salam divuneh...</span>
-                <span >
-                    this is a test Text...
-                </span>
-                <span >
-                    How are you?....</span>
+                <span > salam  divuneh...</span>
+                <span > this is a test Text... </span>
+                <span > How are you?....</span>
 
             </Marquee>
 

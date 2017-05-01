@@ -7,7 +7,7 @@ import Card from './Card/Card';
 import FlipCard from './Card/FlipCard';
 import Maps from './Map/Map.js';
 import Marquee from './Marquee/Marquee';
-import {guid} from './helpers';
+import {guid, animate} from './helpers';
 
 export default class App extends Component {
 
@@ -205,11 +205,14 @@ export default class App extends Component {
         ];
         this.viewManager = {
             views: [
-                "ProfileSection", "resumeSection", "TeamSection", "SkillSection", "ContactSection"
+                "ProfileSection" , "SkillSection", "resumeSection", "TeamSection", "ContactSection"
             ],
             currentViewIndex: 0
         };
+        window.addEventListener("hashchange", function (e) {
+            e.stopPropagation();
 
+        });
     }
 
     /**
@@ -233,12 +236,36 @@ export default class App extends Component {
             else 
                 this.viewManager.currentViewIndex = this.viewManager.views.length - 1;
             }
-        else  {
-          this.viewManager.currentViewIndex =this.viewManager.views.findIndex(state);
+        else {
+            this.viewManager.currentViewIndex = this.viewManager.views.findIndex((p)=>p==state);
 
         }
 
-        window.location= window.location.toString().split('#')[0]+"#"+this.viewManager.views[this.viewManager.currentViewIndex];
+        let ctn = document.getElementsByClassName("mainContainer")[0];
+        let direction = null;
+
+        if (ctn.scrollWidth - ctn.offsetWidth > 200) {
+            direction = "Left";
+        } else {
+            ctn = document.getElementsByClassName("App")[0];
+            direction = "Top";
+        }
+        let target = document.getElementById(this.viewManager.views[this.viewManager.currentViewIndex]);
+
+        let step = (target["offset" + direction] - ctn["scroll" + direction]) / 500;
+
+        let baseScroll = ctn["scroll" + direction];
+        animate((r) => {
+            if (direction == "Top") 
+                window.scrollTo(0, baseScroll + (r * step)+target.parentNode.offsetTop);
+            else 
+                ctn["scroll" + direction] = baseScroll + (r * step);
+            }
+        , 500);
+
+        //        window.location=
+        // window.location.toString().split('#')[0]+"#"+this.viewManager.views[this.view
+        // M anager.currentViewIndex];
     }
 
     clickbtn(show) {
@@ -252,8 +279,6 @@ export default class App extends Component {
 
         }
     
-    changeStatus() {}
-
     render() {
 
         return (
@@ -261,9 +286,14 @@ export default class App extends Component {
 
                 <Sidebar/>
                 <div className="mainContainer">
-                    <Toolbar next={this.changeStatus.bind(this)} back={this.changeStatus.bind(this,[-1])}
-                    home={this.changeStatus.bind(this,["ProfileSection"])}
-                     />
+                    <Toolbar
+                        next={() => this.changeView()}
+                        back={this
+                        .changeView
+                        .bind(this, -1)}
+                        home={this
+                        .changeView
+                        .bind(this, "ProfileSection")}/>
                     <div className="SectionWrapper">
                         <Section Id="ProfileSection" Name="ProfileSection">
                             <span className="fa fa-address-card-o"></span>
@@ -355,7 +385,7 @@ export default class App extends Component {
                             <div className="skillContainer">
                                 {this
                                     .skills
-                                    .map((itm ,itmIdx) => <div key={itmIdx} className="skillWrapper">
+                                    .map((itm, itmIdx) => <div key={itmIdx} className="skillWrapper">
                                         <h3 className="skillTitle">
                                             {itm.title}
                                         </h3>
@@ -365,7 +395,7 @@ export default class App extends Component {
                                             <ul>
                                                 {Object
                                                     .keys(itm.tags)
-                                                    .map((t,idx) => <li key={idx} >
+                                                    .map((t, idx) => <li key={idx}>
                                                         <div
                                                             className="progress"
                                                             style={{
@@ -484,7 +514,7 @@ export default class App extends Component {
 
                         <Section Id="ContactSection" Name="ContactSection">
 
-                            <div class="contact_info">
+                            <div className="contact_info">
                                 <h3>Get in touch</h3>
                                 <hr/>
                                 <h5>I am waiting to assist you</h5>

@@ -20,6 +20,14 @@ class SideBar extends Component {
                     <div className="separator-aside"></div>
                     {/* menu */}
                     <nav>
+                        {
+//                             this.props.viewLinks.map((itm,idx)=><a  >
+//                            <span className="fa fa-home"></span>
+//                            <span className="menu_name">ABOUT</span>
+//                        </a>
+                        
+//                        )
+                        }
                         <a href="#ProfileSection">
                             <span className="fa fa-home"></span>
                             <span className="menu_name">ABOUT</span>
