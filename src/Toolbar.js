@@ -31,9 +31,23 @@ class Toolbar extends Component {
             }}></span>
             RECENT ACTIVITY:
             <Marquee>
-                <span > salam  divuneh...</span>
-                <span > this is a test Text... </span>
-                <span > How are you?....</span>
+                <span >
+                    Personel Evaluation Management System (Asp.net, C#, Ajax)</span>
+                <span >
+                    Interactive Help -Website online tour (Simulation of Office2007 Merlin help by
+                    diffrent characters)</span>
+                <span >
+                    Strategic Enterprise Management (Asp.net, C#)
+                </span>
+                <span>Business Process Management (Asp.net, C#)
+                </span>
+                <span>
+                    Jquery Spotlight Pluggin Interactive Help -Website online tour (Simulation of
+                    Office2007 Merlin help by diffrent characters)
+                </span>
+                <span>Asp.net Insertable/filterable Grid Extender</span>
+                <span>
+                    Asp.net PersianCalendar Component</span>
 
             </Marquee>
 

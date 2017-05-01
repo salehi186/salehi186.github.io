@@ -55,6 +55,8 @@
   .SectionWrapper {
     position: relative;
     text-align: left; }
+  .hs-menu .aside-footer {
+    display: none; }
   .Section {
     display: block;
     position: relative; }
@@ -82,8 +84,6 @@
     left: 0px;
     top: 0px;
     z-index: 999; }
-  .Toolbar ul::after {
-    content: "</br>"; }
   .Toolbar {
     text-align: left;
     padding-left: 0px;
@@ -168,6 +168,7 @@ Team List Styles
   background-repeat: no-repeat; }
 
 .TeamList .social-icons {
+  text-align: center;
   position: absolute;
   bottom: 10px;
   width: calc(100% - 20px);
@@ -186,7 +187,7 @@ Team List Styles
 .TeamList .back .social-icons {
   background: #01BDF2; }
 
-.TeamList .back .social-icons a:hover {
+.TeamList .back .social-icons a:hover, .TeamList .back .social-icons a:active {
   color: #fff; }
 
 /* 
@@ -401,7 +402,7 @@ skills
   margin: 2px;
   position: relative; }
 
-.skill:hover .progress {
+.skill:hover .progress, .skill:active .progress {
   padding: 4px;
   box-sizing: border-box;
   background: linear-gradient(270deg, #18f0b8, #18a2f0, #d1FF40); }
@@ -415,7 +416,7 @@ skills
 .skill .progress .progressText {
   width: 90%; }
 
-.skill:hover .progress .percentage {
+.skill:hover .progress .percentage, .skill:active .progress .percentage {
   display: block; }
 
 .skill ul li {
@@ -429,7 +430,7 @@ skills
   white-space: nowrap;
   animation: emptyanim; }
 
-.skill:hover ul li {
+.skill:hover ul li, .skill:active ul li {
   display: block;
   color: black;
   animation: skillShow 2s; }
@@ -443,3 +444,8 @@ skills
 /*------------------------------------
 Contact 
 -------------------------------------*/
+.contact_info {
+  padding-left: 20px; }
+
+.contact_form {
+  padding-left: 20px; }

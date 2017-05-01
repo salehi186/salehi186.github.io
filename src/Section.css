@@ -12,3 +12,26 @@
 /* On mouse-over, add a deeper shadow */
 .Section:hover {
   box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2); }
+
+.Section .Title {
+  padding: 10px 0 14px 10px;
+  margin-bottom: 16px;
+  margin-top: 4px;
+  font-size: 17px;
+  font-family: Montserrat;
+  letter-spacing: 2px;
+  color: #606777;
+  position: relative; }
+
+.Section .sectionIcon {
+  position: absolute;
+  right: 10px;
+  top: 5px;
+  font-size: 30px;
+  color: #01BDF2; }
+
+.Section .Title::after {
+  content: "  ";
+  display: block;
+  border-bottom: solid #01BDF2 1px;
+  width: 60px; }

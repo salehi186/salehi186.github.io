@@ -3,7 +3,6 @@ import './SideBar.css';
 import Profile from './Profile';
 import 'animate.css';
 
-
 class SideBar extends Component {
     render() {
         return (
@@ -20,34 +19,15 @@ class SideBar extends Component {
                     <div className="separator-aside"></div>
                     {/* menu */}
                     <nav>
-                        {
-//                             this.props.viewLinks.map((itm,idx)=><a  >
-//                            <span className="fa fa-home"></span>
-//                            <span className="menu_name">ABOUT</span>
-//                        </a>
-                        
-//                        )
-                        }
-                        <a href="#ProfileSection">
-                            <span className="fa fa-home"></span>
-                            <span className="menu_name">ABOUT</span>
-                        </a>
-                        <a href="#resumeSection">
-                            <span className="fa fa-newspaper-o"></span>
-                            <span className="menu_name">RESUME</span>
-                        </a>
-                        <a href="#TeamSection">
-                            <span className="fa fa-users"></span>
-                            <span className="menu_name">Friends\Colleague</span>
-                        </a>
-                        <a href="#SkillSection">
-                            <span className="fa fa-diamond"></span>
-                            <span className="menu_name">SKILLS</span>
-                        </a>
-                        <a href="#ContactSection">
-                            <span className="fa fa-paper-plane"></span>
-                            <span className="menu_name">CONTACT</span>
-                        </a>
+                        {this
+                            .props
+                            .viewLinks
+                            .map((itm, idx) => {
+                                return <a onClick={itm.link} key={"menu"+idx}>
+                                    <span className={"fa "+itm.icon}></span>
+                                    <span className="menu_name">{itm.title}</span>
+                                </a>;
+                            })}
                     </nav>
                     {/* end menu*/}
                     {/* social icons */}

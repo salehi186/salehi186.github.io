@@ -205,7 +205,12 @@ export default class App extends Component {
         ];
         this.viewManager = {
             views: [
-                "ProfileSection" , "SkillSection", "resumeSection", "TeamSection", "ContactSection"
+                { id:"ProfileSection", title:"Profil",link:this.changeView.bind(this,"ProfileSection") ,icon:"fa-home" } , 
+                { id:"SkillSection",  title:"Skills",link:this.changeView.bind(this,"SkillSection") ,icon:"fa-diamond"} ,
+                { id:"ResumeSection",  title:"Resume",link: this.changeView.bind(this,"ResumeSection"),icon:"fa-newspaper-o"} ,
+                { id:"TeamSection",  title:"Friends",link: this.changeView.bind(this,"TeamSection"),icon:"fa-users"} ,
+                { id:"ContactSection",  title:"Contact",link: this.changeView.bind(this,"ContactSection"),icon:"fa-paper-plane"} 
+
             ],
             currentViewIndex: 0
         };
@@ -237,7 +242,7 @@ export default class App extends Component {
                 this.viewManager.currentViewIndex = this.viewManager.views.length - 1;
             }
         else {
-            this.viewManager.currentViewIndex = this.viewManager.views.findIndex((p)=>p==state);
+            this.viewManager.currentViewIndex = this.viewManager.views.findIndex((p)=>p.id==state);
 
         }
 
@@ -250,7 +255,7 @@ export default class App extends Component {
             ctn = document.getElementsByClassName("App")[0];
             direction = "Top";
         }
-        let target = document.getElementById(this.viewManager.views[this.viewManager.currentViewIndex]);
+        let target = document.getElementById(this.viewManager.views[this.viewManager.currentViewIndex].id);
 
         let step = (target["offset" + direction] - ctn["scroll" + direction]) / 500;
 
@@ -284,7 +289,7 @@ export default class App extends Component {
         return (
             <div className="App">
 
-                <Sidebar/>
+                <Sidebar viewLinks={this.viewManager.views}/>
                 <div className="mainContainer">
                     <Toolbar
                         next={() => this.changeView()}
@@ -295,9 +300,8 @@ export default class App extends Component {
                         .changeView
                         .bind(this, "ProfileSection")}/>
                     <div className="SectionWrapper">
-                        <Section Id="ProfileSection" Name="ProfileSection">
-                            <span className="fa fa-address-card-o"></span>
-                            <hr width="90%"/>
+                        <Section Id="ProfileSection" Name="Profile">
+                            
                             <div className="profileContainer">
                                 <div className="addressBlock">
                                     <Card Width="100%" Height="250px">
@@ -381,7 +385,7 @@ export default class App extends Component {
                             </div>
                         </Section>
 
-                        <Section Id="SkillSection" Name="SkillSection">
+                        <Section Id="SkillSection" Name="Skills">
                             <div className="skillContainer">
                                 {this
                                     .skills
@@ -416,7 +420,7 @@ export default class App extends Component {
 
                         </Section>
 
-                        <Section Id="resumeSection" Name="resumeSection" className="resume-section">
+                        <Section Id="ResumeSection" Name="Resume" className="resume-section">
 
                             <div className="resume-section">
 
@@ -440,7 +444,7 @@ export default class App extends Component {
                                                         </div>
                                                         <div className="timeline-item">
                                                             <span className="timeline-location">
-                                                                <i className="fa-map-marker"></i>{itm.address}</span>
+                                                                <i className="fa fa-map-marker"></i>{itm.address}</span>
                                                             <h3 className="timeline-header">{itm.title}</h3>
                                                             <div className="timeline-body">
                                                                 <h4>
@@ -454,7 +458,7 @@ export default class App extends Component {
 
                                                                 </h4>
                                                                 <span>{itm.description}</span>
-                                                                <p>wow</p>
+                                                                <p></p>
                                                             </div>
                                                         </div>
                                                     </li>;
@@ -473,9 +477,8 @@ export default class App extends Component {
                             </div>
                         </Section>
 
-                        <Section Id="TeamSection" Name="TeamSection">
-                            <span className="fa fa-users"></span>
-                            <hr width="90%"/>
+                        <Section Id="TeamSection" Name="Friends">
+                            
                             <div className="TeamList">
                                 {this
                                     .friends
@@ -512,7 +515,7 @@ export default class App extends Component {
 
                         </Section>
 
-                        <Section Id="ContactSection" Name="ContactSection">
+                        <Section Id="ContactSection" Name="Contact">
 
                             <div className="contact_info">
                                 <h3>Get in touch</h3>

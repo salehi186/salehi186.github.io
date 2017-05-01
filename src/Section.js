@@ -6,21 +6,17 @@ class Section extends Component {
     render() {
         return (
             <div className="Section" id={this.props.Id}>
-                
-                {this.props.Name || "test"}
+                <span className={"sectionIcon fa "+ (this.props.icon||"fa-address-card-o")}> </span>
+                <h2 className="Title">
+                    {this.props.Name || "test"}
+                </h2>
+
                 {this.props.children}
-                </div>
+            </div>
         );
     }
-    // constructor(props) {
-    //     super(props);
-    // }
-
-    // getDefaultProps() {
-    //     return {
-    //         Id: "fff" + Math.random() * 100
-    //     };
-    // }
+    // constructor(props) {     super(props); } getDefaultProps() {     return {
+    //     Id: "fff" + Math.random() * 100     }; }
 
 }
 
