@@ -1,14 +1,19 @@
 import React, {Component} from 'react';
 import './Profile.css';
+import profileBg from './profileBG.jpg';
 
 class Profile extends Component
 {
     render() {
         return (
-            <aside className="profile-card">
+            <aside
+                className="profile-card"
+                style={{
+                background: `url(${profileBg})`
+            }}>
                 <header>
 
-                    <a href="http://tutsplus.com">
+                    <a>
                         <img alt="" src="images/portrait.jpg"/>
                     </a>
 
@@ -21,28 +26,19 @@ class Profile extends Component
                     <p>Welcome ...</p>
                     <p>I am a full stack web developer. I mainly work with HTML, CSS, JS, React and
                         Asp.net.
-                        <br/>I also play well with Photoshop, After Effects and other cool stuff.</p>
+                        <br/>I also play well with Photoshop and other cool stuff.</p>
 
                     <ul className="profile-social-links">
 
                         <li>
-                            <a href="http://twitter.com/tutsplus">
-                                <img alt=""
-                                    src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/210284/social-twitter.svg"/>
+                            <a href="http://codepen.io/salehi186/" target="_blank">
+                                <span className="fa fa-codepen"></span>
                             </a>
                         </li>
 
                         <li>
-                            <a href="http://envato.com">
-                                <img alt=""
-                                    src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/210284/social-envato.svg"/>
-                            </a>
-                        </li>
-
-                        <li>
-                            <a href="http://codepen.io/tutsplus">
-                                <img alt=""
-                                    src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/210284/social-codepen.svg"/>
+                            <a href="https://www.linkedin.com/pub/aliakbar-salehi/37/508/249" target="_blank">
+                                <span className="fa fa-linkedin-square"></span>
                             </a>
                         </li>
 
