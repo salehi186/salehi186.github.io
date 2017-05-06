@@ -15,6 +15,8 @@ export default class App extends Component {
         super();
         this.friends = [
             //            {Name:"" , job:"",Description:"",facebook:"",linkedin:""},
+           
+           
             {
                 Name: "Serjik Isagholian",
                 job: "Solution Architect",
@@ -64,6 +66,17 @@ export default class App extends Component {
                 linkedin: "https://nz.linkedin.com/pub/samaneh-madanian/70/764/379",
                 imageURL: "/images/team/madanian.jpg"
             }
+            ,{
+                Name: "Ahmad Babaei Moghadam",
+                job: "IT Expert",
+                Description: "Friend/Colleague",
+                facebook: "#",
+                linkedin: "https://www.linkedin.com/in/ahmad-babaei-moghadam-9a25b637/",
+                imageURL: "/images/team/babae.jpg"
+
+            }
+
+
         ];
         this.timeline = {
             educations: {
