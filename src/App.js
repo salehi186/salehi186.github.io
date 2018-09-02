@@ -24,7 +24,7 @@ export default class App extends Component {
                         "arn more. One of the my best friends.",
                 facebook: "#",
                 linkedin: "https://ir.linkedin.com/in/serjikisagholian",
-                imageURL: "/images/team/serj.jpg"
+                imageURL: "images/team/serj.jpg"
 
             }, {
                 Name: "Parinaz Mohsenpour",
@@ -33,7 +33,7 @@ export default class App extends Component {
                         "g.",
                 facebook: "#",
                 linkedin: "https://www.linkedin.com/pub/parinaz-mohsenpour/26/521/705",
-                imageURL: "/images/team/parinaz.jpg"
+                imageURL: "images/team/parinaz.jpg"
             }, {
                 Name: "Fabrizio Straccia",
                 job: "Product Specialist presso BOARD International SA",
@@ -41,7 +41,7 @@ export default class App extends Component {
                         "er and product specialist. ",
                 facebook: "#",
                 linkedin: "https://ch.linkedin.com/pub/fabrizio-straccia/24/99b/596/en",
-                imageURL: "/images/team/fab.jpg"
+                imageURL: "images/team/fab.jpg"
 
             }, {
                 Name: "Nasir Zoue",
@@ -50,21 +50,21 @@ export default class App extends Component {
                         "eting",
                 facebook: "#",
                 linkedin: "https://ir.linkedin.com/pub/nasir-zooei/73/48a/944",
-                imageURL: "/images/team/nasir.jpg"
+                imageURL: "images/team/nasir.jpg"
             }, {
                 Name: "M.T samadi",
                 job: "Q.A. manager at MSC (Mobarakeh Steel Company)",
                 Description: "Friend/Colleague, 2011-2015 MSC - A real manager who know how to lead his team.",
                 facebook: "#",
                 linkedin: "https://ir.linkedin.com/pub/m-t-samadi/40/3a1/380",
-                imageURL: "/images/team/samadi.jpg"
+                imageURL: "images/team/samadi.jpg"
             }, {
                 Name: "Samaneh Madanian",
                 job: "PhD Candidate- Auckland, New Zealand ",
                 Description: "Friend/Classmate, 2002-2004 University of Applied Science and Technology.",
                 facebook: "#",
                 linkedin: "https://nz.linkedin.com/pub/samaneh-madanian/70/764/379",
-                imageURL: "/images/team/madanian.jpg"
+                imageURL: "images/team/madanian.jpg"
             }
             ,{
                 Name: "Ahmad Babaei Moghadam",
@@ -72,7 +72,7 @@ export default class App extends Component {
                 Description: "Friend/Colleague",
                 facebook: "#",
                 linkedin: "https://www.linkedin.com/in/ahmad-babaei-moghadam-9a25b637/",
-                imageURL: "/images/team/babae.jpg"
+                imageURL: "images/team/babae.jpg"
 
             }
 
@@ -356,7 +356,7 @@ export default class App extends Component {
                                         OpenButton="#opennMapCover"
                                         ShowAnimation="slideInLeft"
                                         HideAnimation="slideOutLeft">
-                                        <div className="ProfileCover">
+                                        <div className="ProfileCover" style={{background:'-webkit-linear-gradient(rgba(43, 48, 59, 0.75), rgba(118, 155, 236, 0.75)), url("images/cover.jpg") no-repeat'}}>
                                             <span
                                                 className="fa  fa-map-o"
                                                 style={{
