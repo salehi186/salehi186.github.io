@@ -79,7 +79,58 @@ export default class App extends Component {
 
         ];
         this.timeline = {
-            educations: {
+            "JOBS AND EXPERIENCE": {
+                icon: "fa-briefcase",
+                items: [
+                    // {title:"", description:"", startDate:"", endDate:"", company:{ name:"MSC",
+                    // website:"", address:"", location:""} }
+                    {
+                        title: "SENIOR FRONTEND DEVELOPER",
+                        description: "React js, Redux, JavaScript, HTML5, CSS3" ,
+                        startDate: "2018",
+                        endDate: "Now",
+
+                        name: "Pidoco GmbH",
+                        website: "http://pidoco.com/",
+                        address: "BERLIN , GERMANY",
+                        location: ""
+
+                    }, {
+                        title: "SENIOR WEB DEVELOPER",
+                        description: "JavaScript, HTML5, CSS3, BootStrap, ASP.NET Pages, C#, SQL Server, Reporting Services, Backbonejs ,...",
+                        startDate: "2012",
+                        endDate: "2018",
+
+                        name: "MOBARAKE STEEL COMPANY (MSC)",
+                        website: "http://en.msc.ir/",
+                        address: "ESFAHAN , IRAN",
+                        location: ""
+
+                    }, {
+                        title: "WEB DEVELOPER, PROGRAMMER",
+                        description: "JavaScript, HTML, CSS, Jquery, ASP.NET , SQL Server,...",
+                        startDate: "2009",
+                        endDate: "2012",
+
+                        name: "International Systems Engineering & Automation Company (IRISA)",
+                        website: "http://www.irisaco.com/irisa-en/",
+                        address: "ESFAHAN , IRAN",
+                        location: ""
+
+                    }, {
+                        title: "FRONT-END DEVELOPER",
+                        description: "JavaScript, HTML, CSS, ASP.NET",
+                        startDate: "2009",
+                        endDate: "2009",
+
+                        name: "Decision Makers Information Systems (DEMIS)",
+                        website: "http://www.demisco.com/",
+                        address: "ESFAHAN , IRAN",
+                        location: ""
+
+                    }
+                ]
+            },Educations: {
                 icon: "fa-graduation-cap",
                 items: [
                     // {title:"", description:"", startDate:"", endDate:"", college:{
@@ -108,48 +159,6 @@ export default class App extends Component {
 
                     }
 
-                ]
-            },
-            "JOBS AND EXPERIENCE": {
-                icon: "fa-briefcase",
-                items: [
-                    // {title:"", description:"", startDate:"", endDate:"", company:{ name:"MSC",
-                    // website:"", address:"", location:""} }
-                    {
-                        title: "SENIOR WEB DEVELOPER",
-                        description: "ASP.NET Pages, C#, SQL Server, Reporting Services, JavaScript, HTML5, CSS3, Boot" +
-                                "Strap, Backbonejs ,...",
-                        startDate: "2012",
-                        endDate: "Now",
-
-                        name: "MOBARAKE STEEL COMPANY (MSC)",
-                        website: "http://en.msc.ir/",
-                        address: "ESFAHAN , IRAN",
-                        location: ""
-
-                    }, {
-                        title: "WEB DEVELOPER, PROGRAMMER",
-                        description: "ASP.NET , SQL Server,...",
-                        startDate: "2009",
-                        endDate: "2012",
-
-                        name: "International Systems Engineering & Automation Company (IRISA)",
-                        website: "http://www.irisaco.com/irisa-en/",
-                        address: "ESFAHAN , IRAN",
-                        location: ""
-
-                    }, {
-                        title: "FRONT-END DEVELOPER",
-                        description: "JavaScript, HTML, CSS, ASP.NET",
-                        startDate: "2009",
-                        endDate: "2009",
-
-                        name: "Decision Makers Information Systems (DEMIS)",
-                        website: "http://www.demisco.com/",
-                        address: "ESFAHAN , IRAN",
-                        location: ""
-
-                    }
                 ]
             }
         };
@@ -336,7 +345,7 @@ export default class App extends Component {
                                             textAlign: "left"
                                         }}>
                                             <span id="opennMapCover" className="fa  fa-sign-in"></span>
-                                            &nbsp;&nbsp;&nbsp; Isfahan, Iran
+                                            &nbsp;&nbsp;&nbsp; BERLIN, GERMANY
                                         </div>
 
                                     </Card>

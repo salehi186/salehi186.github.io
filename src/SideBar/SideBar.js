@@ -14,7 +14,7 @@ class SideBar extends Component {
                         <h1>AliAkbar Salehi</h1>
                         <h4>WEB DESIGNER</h4>
                         <h6>
-                            <span className="fa fa-location-arrow"></span>&nbsp;&nbsp;&nbsp;IRAN , Isfahan</h6>
+                            <span className="fa fa-location-arrow"></span>&nbsp;&nbsp;&nbsp;GERMANY , BERLIN</h6>
                     </div>
                     <div className="separator-aside"></div>
                     {/* menu */}
