@@ -10,14 +10,10 @@ class Section extends Component {
                 <h2 className="Title">
                     {this.props.Name || "test"}
                 </h2>
-
                 {this.props.children}
             </div>
         );
     }
-    // constructor(props) {     super(props); } getDefaultProps() {     return {
-    //     Id: "fff" + Math.random() * 100     }; }
-
 }
 
 export default Section;
