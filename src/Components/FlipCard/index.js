@@ -1,9 +1,8 @@
 import React, {Component} from 'react';
-import propTypes from 'prop-types';
-import Card from './Card';
-import './FlipCard.css';
+import Card from '../Card';
+import {v4} from 'uuid'
+import './index.css';
 import 'animate.css';
-import {guid} from "../helpers";
 
 export default class FlipCard extends Component {
     static defaultProps = {
@@ -48,8 +47,8 @@ export default class FlipCard extends Component {
 
     render() {
         const children = [
-        <Card  {...this.props.children[1].props } ref="Back" key={guid()} > { this.props.children[1].props.children} </Card>
-       ,<Card  {...this.props.children[0].props } ref="Front" key={guid()}> {this.props.children[0].props.children} </Card>
+        <Card  {...this.props.children[1].props } ref="Back" key={v4()} > { this.props.children[1].props.children} </Card>
+       ,<Card  {...this.props.children[0].props } ref="Front" key={v4()}> {this.props.children[0].props.children} </Card>
      ]
 
         return <div

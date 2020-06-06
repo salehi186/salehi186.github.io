@@ -1,96 +1,101 @@
+@media (min-width: 500px) {
+  body,
+  html,
+  .App {
+    height: 100%;
+    width : 100%;
+    margin: 0;
+  }
+  .main-container {
+    // margin-left: 200px;
+    display: flex;
+    height: 100%;
+    width: 100%;
+    border: solid black 5px;
+    overflow: scroll;
+    flex: 2;
+  }
 
-@media (min-width:500px) {
   .SectionWrapper {
-    padding-top: 40px;
-    position: relative;
-    height: calc(100% - 50px);
-    width: 5000px;
-    text-align: left;
+    padding-left: 200px;
+    display: flex;
+    flex-wrap: nowrap;
   }
   .Section {
-    height: calc(100% - 15px);
-    display: block;
-    position: relative;
+    width: 450px;
+    padding: 5px;
   }
-  .SectionWrapper>div {
+
+  .App {
+    position: absolute;
+    top:0px;
+    left: 0px;
+    border: solid 2px red;
+    display: flex;
+    flex-flow: column wrap;
+    background-color: rgb(159, 159, 165);
+    align-items: stretch;
     height: 100%;
-    width: 500px;
-  }
-  .body {
     overflow: hidden;
   }
+
+  .Toolbar {
+    text-align: left;
+    padding-left: 0px;
+    color: #01bdf2;
+    background-color: whitesmoke;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+    transition: 0.3s;
+  }
+
+  .SideBar {
+    width: 200px;
+    position: fixed;
+    top:50px;
+    left:0px;
+    height: 100%;
+    z-index: 999;
+  }
+  .hs-menu .aside-footer {
+    display: none;
+  }
+}
+
+@media (max-width: 500px) {
   .App {
     display: block;
     position: absolute;
     height: 100%;
     width: 100%;
     text-align: center;
-    background-color: #E4E4E8;
+    background-color: #e4e4e8;
+    overflow: hidden;
   }
-  .App .mainContainer {
-    margin-top: 15px;
-    width: 100%;
-    overflow-x: auto;
-    padding-left: 200px;
+  .App .main-container {
     height: 100%;
+    width: 100%;
     display: block;
     height: 98%;
     box-sizing: border-box;
-    scroll-behavior: smooth;
+    overflow: scroll;
   }
-  .SideBar {
-    width: 200px;
-    height: 100%;
-    display: block;
-    position: fixed;
-    left: 0px;
-    top: 0px;
-    z-index: 999;
-  }
-  .Toolbar {
-    text-align: left;
-    padding-left: 0px;
-    color: #01BDF2;
-    position: fixed;
-    top: 0px;
-    z-index: 99;
-    width: 100%;
-    background-color: whitesmoke;
-    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
-    transition: 0.3s;
-  }
-}
 
-@media (max-width:500px) {
   .SectionWrapper {
     position: relative;
     text-align: left;
   }
-  .hs-menu .aside-footer{
+  .hs-menu .aside-footer {
     display: none;
   }
   .Section {
     display: block;
     position: relative;
+    min-height: 600px;
   }
-  .SectionWrapper>div {
+  .SectionWrapper > div {
     width: 98%;
   }
-  .App {
-    display: block;
-    position: absolute;
-    height: 100%;
-    width: 100%;
-    text-align: center;
-    background-color: #E4E4E8;
-  }
-  .App .mainContainer {
-    height: 100%;
-    width: 100%;
-    display: block;
-    height: 98%;
-    box-sizing: border-box;
-  }
+  
   .SideBar .hs-menu nav {
     display: none;
   }
@@ -98,14 +103,12 @@
     padding-top: 100px;
     width: 99%;
     display: block;
-    left: 0px;
-    top: 0px;
-    z-index: 999;
   }
+
   .Toolbar {
     text-align: left;
     padding-left: 0px;
-    color: #01BDF2;
+    color: #01bdf2;
     position: fixed;
     top: 0px;
     left: 0px;
@@ -159,7 +162,6 @@ span.icon {
   font-family: FontAwesome;
 }
 
-
 /*
 ----------------------------------------------------------
 Team List Styles
@@ -176,7 +178,7 @@ Team List Styles
   padding: 5px 0;
   font-size: 13px;
   line-height: 1.1;
-  color: #01BDF2;
+  color: #01bdf2;
 }
 
 .TeamList h4 {
@@ -211,7 +213,7 @@ Team List Styles
   position: absolute;
   bottom: 10px;
   width: calc(100% - 20px);
-  border-top: 1px solid #DBDBE0;
+  border-top: 1px solid #dbdbe0;
   padding-top: 10px;
 }
 
@@ -226,13 +228,13 @@ Team List Styles
 }
 
 .TeamList .back .social-icons {
-  background: #01BDF2;
+  background: #01bdf2;
 }
 
-.TeamList .back .social-icons a:hover ,.TeamList .back .social-icons a:active{
+.TeamList .back .social-icons a:hover,
+.TeamList .back .social-icons a:active {
   color: #fff;
 }
-
 
 /* 
 ------------------------------------------------------
@@ -279,8 +281,13 @@ Profile Description
 }
 
 .ProfileCover {
-  background: linear-gradient(rgba(43, 48, 59, 0.75), rgba(118, 155, 236, 0.75)), no-repeat;
-  background: -webkit-linear-gradient(rgba(43, 48, 59, 0.75), rgba(118, 155, 236, 0.75)), no-repeat;
+  background: linear-gradient(rgba(43, 48, 59, 0.75), rgba(118, 155, 236, 0.75)),
+    no-repeat;
+  background: -webkit-linear-gradient(
+      rgba(43, 48, 59, 0.75),
+      rgba(118, 155, 236, 0.75)
+    ),
+    no-repeat;
   background-size: 100%;
   height: 250px;
   position: relative;
@@ -288,13 +295,13 @@ Profile Description
 }
 
 .profileDescription {
-  padding-top: 260px
+  padding-top: 260px;
 }
 
 .tab-pane {
   padding: 10px;
   background: rgba(248, 249, 251, 0.6);
-  border: 1px solid #DBDBE0;
+  border: 1px solid #dbdbe0;
   margin-left: 10px;
   text-align: left;
 }
@@ -320,7 +327,6 @@ Profile Description
   position: relative;
 }
 
-
 /*--------------------------------------------------
 ----------------------- Resume ---------------------
 ---------------------------------------------------*/
@@ -331,31 +337,31 @@ Profile Description
   list-style: none;
 }
 
-.resume-section .resume>li {
+.resume-section .resume > li {
   position: relative;
   margin-bottom: 10px;
 }
 
-.resume-section .resume>li:before,
-.resume-section .resume>li:after {
+.resume-section .resume > li:before,
+.resume-section .resume > li:after {
   display: table;
   content: " ";
 }
 
-.resume-section .resume>li:after {
+.resume-section .resume > li:after {
   clear: both;
 }
 
-.resume-section .resume>li>.timeline-item {
+.resume-section .resume > li > .timeline-item {
   margin-top: 0px;
   background: rgba(248, 249, 251, 0.6);
   margin-left: 55px;
   padding: 10px;
   position: relative;
-  border: 1px solid #DBDBE0;
+  border: 1px solid #dbdbe0;
 }
 
-.resume-section .resume>li>.timeline-item>.timeline-location {
+.resume-section .resume > li > .timeline-item > .timeline-location {
   float: right;
   margin: 2px 0 0 0;
   font-weight: 400;
@@ -367,12 +373,12 @@ Profile Description
   text-transform: uppercase;
 }
 
-.resume-section .resume>li>.timeline-item>.timeline-location .fa {
+.resume-section .resume > li > .timeline-item > .timeline-location .fa {
   margin-right: 5px;
   font-size: 12px;
 }
 
-.resume-section .resume>li>.timeline-item>.timeline-header {
+.resume-section .resume > li > .timeline-item > .timeline-header {
   margin: 0;
   padding: 5px 0;
   font-size: 0.9em;
@@ -380,15 +386,15 @@ Profile Description
   font-family: Montserrat;
 }
 
-.resume-section .resume>li>.timeline-item>.timeline-header>a {
+.resume-section .resume > li > .timeline-item > .timeline-header > a {
   font-weight: 400;
 }
 
-.resume-section .resume>li>.timeline-item>.timeline-body {
+.resume-section .resume > li > .timeline-item > .timeline-body {
   padding: 2px 0px;
 }
 
-.resume-section .resume>li>.timeline-item>.timeline-body span {
+.resume-section .resume > li > .timeline-item > .timeline-body span {
   font-size: 13px;
   line-height: 24px;
   text-align: justify;
@@ -397,19 +403,18 @@ Profile Description
   display: inline-block;
 }
 
-.resume-section .resume>li>.resume-tag {
+.resume-section .resume > li > .resume-tag {
   width: 45px;
   height: 100%;
   font-size: 15px;
   line-height: 30px;
   position: absolute;
   color: rgba(255, 255, 255, 0.82);
-  ;
   text-align: center;
   top: 0;
 }
 
-.resume-section .resume>li>.resume-tag .fa {
+.resume-section .resume > li > .resume-tag .fa {
   height: 30px;
   width: 100%;
   line-height: 30px;
@@ -450,14 +455,13 @@ Profile Description
   position: relative;
 }
 
-.resume-section .resume>li>.resume-tag {
-  background: #01BDF2;
+.resume-section .resume > li > .resume-tag {
+  background: #01bdf2;
 }
 
 .resume-section {
   text-align: left;
 }
-
 
 /*-------------------------------------------------
 skills
@@ -469,9 +473,9 @@ skills
   background: rgba(248, 249, 251, 0.6);
   padding: 10px;
   position: relative;
-  border: 1px solid #DBDBE0;
+  border: 1px solid #dbdbe0;
   margin: 10px 0;
-  color: #606777
+  color: #606777;
 }
 
 .skillWrapper {
@@ -485,10 +489,11 @@ skills
   position: relative;
 }
 
-.skill:hover .progress, .skill:active .progress  {
+.skill:hover .progress,
+.skill:active .progress {
   padding: 4px;
   box-sizing: border-box;
-  background: linear-gradient(270deg, #18f0b8, #18a2f0, #d1FF40);
+  background: linear-gradient(270deg, #18f0b8, #18a2f0, #d1ff40);
 }
 
 .skill .progress .percentage {
@@ -502,7 +507,8 @@ skills
   width: 90%;
 }
 
-.skill:hover .progress .percentage , .skill:active .progress .percentage {
+.skill:hover .progress .percentage,
+.skill:active .progress .percentage {
   display: block;
 }
 
@@ -518,7 +524,8 @@ skills
   animation: emptyanim;
 }
 
-.skill:hover ul li ,.skill:active ul li {
+.skill:hover ul li,
+.skill:active ul li {
   display: block;
   color: black;
   animation: skillShow 2s;
@@ -533,18 +540,13 @@ skills
   }
 }
 
-
 /*------------------------------------
 Contact 
 -------------------------------------*/
 
 .contact_info {
-padding-left: 20px;
-
+  padding-left: 20px;
 }
-.contact_form{
-padding-left: 20px;
-
-
+.contact_form {
+  padding-left: 20px;
 }
-

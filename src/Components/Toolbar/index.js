@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
-import './Toolbar.css';
-import Marquee from './Marquee/Marquee'
+import './index.css';
+import Marquee from '../Marquee'
 
 class Toolbar extends Component {
     render() {

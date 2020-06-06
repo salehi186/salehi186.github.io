@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import './Marquee.css';
+import './index.css';
 import 'animate.css';
 
 export default class Marquee extends Component {
