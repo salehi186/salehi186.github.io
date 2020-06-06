@@ -2,7 +2,7 @@ import React, {Component} from 'react';
 import './index.css';
 import profileBg from './profileBG.jpg';
 
-class Profile extends Component
+export class Profile extends Component
 {
     render() {
         return (
@@ -53,4 +53,3 @@ class Profile extends Component
 
 }
 
-export default Profile;

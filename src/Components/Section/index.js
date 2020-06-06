@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import './index.css';
 
-class Section extends Component {
+export class Section extends Component {
 
     render() {
         return (
@@ -16,4 +16,3 @@ class Section extends Component {
     }
 }
 
-export default Section;

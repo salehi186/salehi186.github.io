@@ -3,7 +3,7 @@
   html,
   .App {
     height: 100%;
-    width : 100%;
+    width: 100%;
     margin: 0;
   }
   .main-container {
@@ -11,7 +11,6 @@
     display: flex;
     height: 100%;
     width: 100%;
-    border: solid black 5px;
     overflow: scroll;
     flex: 2;
   }
@@ -22,15 +21,14 @@
     flex-wrap: nowrap;
   }
   .Section {
-    width: 450px;
+    width: 500px;
     padding: 5px;
   }
 
   .App {
     position: absolute;
-    top:0px;
+    top: 0px;
     left: 0px;
-    border: solid 2px red;
     display: flex;
     flex-flow: column wrap;
     background-color: rgb(159, 159, 165);
@@ -51,8 +49,8 @@
   .SideBar {
     width: 200px;
     position: fixed;
-    top:50px;
-    left:0px;
+    top: 50px;
+    left: 0px;
     height: 100%;
     z-index: 999;
   }
@@ -95,7 +93,7 @@
   .SectionWrapper > div {
     width: 98%;
   }
-  
+
   .SideBar .hs-menu nav {
     display: none;
   }
@@ -188,29 +186,33 @@ Team List Styles
   color: #fff;
   text-align: left;
 }
+.TeamList div{
+  border-radius: 10px;
+
+}
 
 .TeamList .front-detail {
-  width: 90%;
   background-color: rgba(0, 0, 0, 0.3);
 }
 
-.TeamList .front .front-detail {
-  position: absolute;
+.TeamList .front-detail {
+  color: white;
+  padding: 2px;
+  width:100%;
   bottom: 5px;
+  min-height: 50px;
 }
 
-.TeamList .back .front {
-  text-align: center;
-}
-
-.TeamList .frontWrapper {
+.TeamList .frontWrapper , .TeamList .backWrapper{
   background-size: 100% 100%;
   background-repeat: no-repeat;
+  display: flex;
+  flex-flow: column-reverse;
+  border-radius: 10px;
 }
 
 .TeamList .social-icons {
   text-align: center;
-  position: absolute;
   bottom: 10px;
   width: calc(100% - 20px);
   border-top: 1px solid #dbdbe0;
@@ -243,21 +245,11 @@ Profile Description
 */
 
 .addressBlock .Card {
-  position: absolute;
+  // position: absolute;
   display: block;
   top: 0px;
   width: 100%;
-  height: 100px;
   background-color: gray;
-}
-
-.addressBlock {
-  text-align: center;
-  display: block;
-  position: relative;
-  border: solid 1px black;
-  width: 94%;
-  margin: 0px 2%;
 }
 
 .ProfileCover span {
@@ -281,17 +273,31 @@ Profile Description
 }
 
 .ProfileCover {
+  display: block;
+  position: relative;
   background: linear-gradient(rgba(43, 48, 59, 0.75), rgba(118, 155, 236, 0.75)),
     no-repeat;
   background: -webkit-linear-gradient(
       rgba(43, 48, 59, 0.75),
-      rgba(118, 155, 236, 0.75)
+      rgba(52, 60, 78, 0.75)
     ),
     no-repeat;
   background-size: 100%;
   height: 250px;
   position: relative;
   z-index: 99;
+}
+.ProfileCover::after {
+  content: "";
+  background:  url("images/cover.jpg");
+  background-size: 500px 250px;
+  opacity: 0.5;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  position: absolute;
+  z-index: -1;   
 }
 
 .profileDescription {
@@ -302,7 +308,6 @@ Profile Description
   padding: 10px;
   background: rgba(248, 249, 251, 0.6);
   border: 1px solid #dbdbe0;
-  margin-left: 10px;
   text-align: left;
 }
 

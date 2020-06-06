@@ -1,14 +1,29 @@
-.FlipCard>div{
-    position: absolute;
-    top:0px;
-    left: 0px;
-    width: 100%;
-    height: 100%;
-}
-.FlipCard>div:nth-child(1){
-
+.flip-card > div {
+  top: 0px;
+  left: 0px;
+  width: 100%;
+  height: 100%;
+  transition: 1s;
 }
 
-.FlipCard{
-    
+.flip-card > div:nth-child(2) {
+  height: 0px;
+  opacity: 0;
+}
+.flip-card:hover > div:nth-child(2) {
+  height: 100%;
+  opacity: 1;
+}
+.flip-card > div:nth-child(1) {
+  height: 100%;
+  opacity: 1;
+  background-color: gray;
+}
+.flip-card:hover > div:nth-child(1) {
+  height: 0px;
+  opacity: 0;
+}
+.flip-card {
+  position: "relative";
+  margin: 10px;
 }

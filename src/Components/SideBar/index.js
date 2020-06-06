@@ -1,9 +1,8 @@
 import React, { Component } from "react";
 import "./index.css";
-import Profile from "../profile";
-import "animate.css";
+import {Profile} from "../profile";
 
-const SideBar = ({ viewLinks, onClick }) => {
+export const SideBar = ({ viewLinks, onClick }) => {
   return (
     <div className="SideBar">
       <Profile />
@@ -47,4 +46,3 @@ const SideBar = ({ viewLinks, onClick }) => {
   );
 };
 
-export default SideBar;

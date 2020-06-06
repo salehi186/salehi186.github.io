@@ -1,13 +1,13 @@
-import React, { Component, useRef, useState } from "react";
-import Sidebar from "./Components/SideBar";
-import Section from "./Components/Section";
-import Toolbar from "./Components/Toolbar";
-import Card from "./Components/Card";
-import FlipCard from "./Components/FlipCard";
-import Maps from "./Components/Map";
-import Marquee from "./Components/Marquee";
+import React, { Component, useRef, useState, useEffect } from "react";
+import { SideBar } from "./Components/SideBar";
+import { Section } from "./Components/Section";
+import { Toolbar } from "./Components/Toolbar";
+import { Card } from "./Components/Card";
+import { FlipCard } from "./Components/FlipCard";
+import { Marquee } from "./Components/Marquee";
+import { Post } from "./Components/Post";
 import { v4 } from "uuid";
-import { data } from "./data";
+import { Negros as Loading } from "react-explode";
 import "./App.css";
 
 window.addEventListener("hashchange", function (e) {
@@ -33,14 +33,45 @@ const App = () => {
         });
       } else {
         document.getElementsByClassName("main-container")[0].scrollTo({
-          top: elm.offsetTop + elm.parentElement.offsetTop -100,
+          top: elm.offsetTop + elm.parentElement.offsetTop - 100,
           left: 0,
           behavior: "smooth",
         });
       }
     }
   };
-  return (
+
+  const [data, setData] = useState(null);
+  const [posts, setPosts] = useState([]);
+  useEffect(() => {
+    const fetchData = async () => {
+      let res = await fetch(
+        "https://gist.githubusercontent.com/salehi186/5217acfd1df972ecb8e5812b4142c18e/raw/1401e9844771d0e4cc11edc287ed8a15e7a82a46/salehi186.db.json"
+      );
+      setData(await res.json());
+
+      let postsRes = await fetch(
+        "https://api.github.com/users/salehi186/gists"
+      );
+      setPosts((await postsRes.json()).filter((p) => p.description));
+    };
+    fetchData();
+  }, []);
+  return !data ? (
+    <div
+      style={{
+        position: "absolute",
+        width: "100%",
+        height: "100%",
+        display: "flex",
+        alignItems: "center",
+        justifyContent: "center",
+        backgroundColor: "black",
+      }}
+    >
+      <Loading size="400" delay={0} repeatDelay={0} repeat={500} />
+    </div>
+  ) : (
     <div className="App" ref={container}>
       <Toolbar
         next={() => scrollTo(currentSection, 1)}
@@ -48,97 +79,48 @@ const App = () => {
         home={() => scrollTo("ProfileSection")}
       />
       <div className="main-container">
-        <Sidebar
+        <SideBar
           viewLinks={data.viewManager.views}
           onClick={(id) => scrollTo(id)}
         />
         <div className="SectionWrapper">
           <Section Id="ProfileSection" Name="Profile">
             <div className="profileContainer">
-              <div className="addressBlock">
-                <Card Width="100%" Height="250px">
-                  <Maps
-                    style={{
-                      border: "solid 1px blue",
-                      height: "calc(100% -20px)",
-                      width: "100%",
-                    }}
-                  ></Maps>
-                  <div
-                    style={{
-                      position: "relative",
-                      bottom: "0px",
-                      right: "0px",
-                      width: "95%",
-                      height: "20px",
-                      backgroundColor: "rgba(255,255,255,0.8)",
-                      padding: "10px",
-                      textAlign: "left",
-                    }}
-                  >
-                    <span id="opennMapCover" className="fa  fa-sign-in"></span>
-                    &nbsp;&nbsp;&nbsp; BERLIN, GERMANY
-                  </div>
-                </Card>
-                <Card
-                  width="100%"
-                  Height="250px"
-                  CloseButton="#closMapCover"
-                  OpenButton="#opennMapCover"
-                  ShowAnimation="slideInLeft"
-                  HideAnimation="slideOutLeft"
-                >
-                  <div
-                    className="ProfileCover"
-                    style={{
-                      background:
-                        '-webkit-linear-gradient(rgba(43, 48, 59, 0.75), rgba(118, 155, 236, 0.75)), url("images/cover.jpg") no-repeat',
-                    }}
-                  >
-                    <span
-                      className="fa  fa-map-o"
-                      style={{
-                        position: "absolute",
-                        top: "0px",
-                        right: "0px",
-                        padding: "10px",
-                      }}
-                      id="closMapCover"
-                    ></span>
-                    <span className="about-description">
-                      Hello. I am a
-                      <Marquee animateIn="bounceIn" animateOut="bounceOut">
-                        <b>Developer</b>
-                        <b>Programer</b>
-                        <b>Fast Learner</b>
-                      </Marquee>
-                      <br />I am passionate about programming, coding and
-                      webdesign
-                      <br />
-                      Welcome to my Personal profile
-                    </span>
-                  </div>
-                </Card>
-              </div>
-              <div id="profileDescription" className="profileDescription">
-                <div className="tab-pane fade in active" id="bio">
-                  <h3>BIO</h3>
-                  <h4>ABOUT ME</h4>
-                  <p>
-                    Solutions-driven programmer with an eight-year track record
-                    of commended performance in modular and object-oriented
-                    programming. Well-versed in all phases of the software
-                    development life-cycle, with a strong working knowledge of
-                    algorithms and data structures. Proven success engineering
-                    customized solutions improving business processes,
-                    operations and profitability. Never gives up from trying new
-                    technologies. I'm always keeping an eye on the latest trends
-                    over web design and programming specially HTML5, CSS3,
-                    JavaScript. I think I'm hard worker, loves communications
-                    and internet, hope to work with other professional teams to
-                    learn more.
-                  </p>
+              <Card Height="250px">
+                <div className="ProfileCover">
+                  <span className="about-description">
+                    Hello. I am a &nbsp;
+                    <Marquee animation="bounceIn">
+                      <b>Lead</b>
+                      <b>Software Engineer</b>
+                      <b>Programer</b>
+                      <b>Fast Learner</b>
+                    </Marquee>
+                    <br />I am passionate about programming, coding and
+                    webdesign
+                    <br />
+                    Welcome to my Personal profile
+                  </span>
                 </div>
+              </Card>
+
+              <div className="tab-pane fade in active" id="bio">
+                <h3>BIO</h3>
+                <h4>ABOUT ME</h4>
+                <p>
+                  Solutions-driven programmer with an eight-year track record of
+                  commended performance in modular and object-oriented
+                  programming. Well-versed in all phases of the software
+                  development life-cycle, with a strong working knowledge of
+                  algorithms and data structures. Proven success engineering
+                  customized solutions improving business processes, operations
+                  and profitability. Never gives up from trying new
+                  technologies. I'm always keeping an eye on the latest trends
+                  over web design and programming specially HTML5, CSS3,
+                  JavaScript. I think I'm hard worker, loves communications and
+                  internet, hope to work with other professional teams to learn
+                  more.
+                </p>
               </div>
             </div>
           </Section>
@@ -226,20 +208,12 @@ const App = () => {
           <Section Id="TeamSection" Name="Friends">
             <div className="TeamList">
               {data.friends.map((p) => (
-                <FlipCard
-                  InboxAnimation={true}
-                  Width="49%"
-                  Height="245px"
-                  key={v4()}
-                >
-                  <Card
-                    ShowAnimation="flipInX"
-                    HideAnimation="flipOutX"
-                    baseClass="front"
-                  >
+                <FlipCard Width="96%" Height="350px" key={v4()}>
+                  <Card>
                     <div
                       className="frontWrapper"
                       style={{
+                        filter: "grayscale(70%)",
                         backgroundImage: "url('" + p.imageURL + "')",
                         width: "100%",
                         height: "100%",
@@ -251,27 +225,74 @@ const App = () => {
                       </div>
                     </div>
                   </Card>
-                  <Card
-                    ShowAnimation="flipInX"
-                    HideAnimation="flipOutX"
-                    baseClass="back"
-                  >
-                    <p>{p.Description}</p>
-                    <div className="social-icons">
-                      <a href={p.linkedin} target="_blank">
-                        <span className="fa fa-linkedin"></span>
-                      </a>
-                      &nbsp;&nbsp;
-                      <a href={p.facebook}>
-                        <span className="fa fa-facebook"></span>
-                      </a>
+                  <Card>
+                    <div
+                      className="backWrapper"
+                      style={{
+                        backgroundImage: "url('" + p.imageURL + "')",
+                        width: "100%",
+                        height: "100%",
+                      }}
+                    >
+                      <div className="front-detail">
+                        <p>{p.Description}</p>
+
+                        <div className="social-icons ">
+                          <a href={p.linkedin} target="_blank">
+                            <span className="fa fa-linkedin"></span>
+                          </a>
+                          &nbsp;&nbsp;
+                          <a href={p.facebook}>
+                            <span className="fa fa-facebook"></span>
+                          </a>
+                        </div>
+                      </div>
                     </div>
                   </Card>
                 </FlipCard>
               ))}
             </div>
           </Section>
-
+          <Section Id="Posts" Name="Posts">
+            {posts.length ? (
+              posts.map((post) => {
+                const texts = post.description.split("#");
+                const title = texts.splice(0, 1);
+                return (
+                  <Post key={v4()}
+                    body={
+                      <div>
+                        <h4> {title}</h4>
+                        <ul>
+                          {texts.map((t) => (
+                            <li key={v4()}
+                              style={{
+                                display: "inline-block",
+                                border: "solid whitesmoke 1px",
+                                color: "darkslategray",
+                                backgroundColor: "lightgray",
+                                padding: "3px",
+                                margin: "1px",
+                                fontSize: "12px",
+                                textAlign: "left",
+                                whiteSpace: "nowrap",
+                              }}
+                            >
+                              {t}
+                            </li>
+                          ))}
+                        </ul>
+                      </div>
+                    }
+                    head={new Date(post.updated_at).toLocaleString()}
+                    link={post.html_url}
+                  />
+                );
+              })
+            ) : (
+              <Loading size="400" delay={0} repeatDelay={0} repeat={500} />
+            )}
+          </Section>
           <Section Id="ContactSection" Name="Contact">
             <div className="contact_info">
               <h3>Get in touch</h3>
@@ -296,42 +317,3 @@ const App = () => {
   );
 };
 export default App;
-
-// const changeView = (state) => {
-//   if (!state) {
-//     if (this.viewManager.currentViewIndex < this.viewManager.views.length - 1)
-//       ++this.viewManager.currentViewIndex;
-//     else this.viewManager.currentViewIndex = 0;
-//   } else if (state == -1) {
-//     if (this.viewManager.currentViewIndex > 0)
-//       --this.viewManager.currentViewIndex;
-//     else
-//       this.viewManager.currentViewIndex = this.viewManager.views.length - 1;
-//   } else {
-//     this.viewManager.currentViewIndex = this.viewManager.views.findIndex(
-//       (p) => p.id == state
-//     );
-//   }
-
-//   let ctn = document.getElementsByClassName("mainContainer")[0];
-//   let direction = null;
-
-//   if (ctn.scrollWidth - ctn.offsetWidth > 200) {
-//     direction = "Left";
-//   } else {
-//     ctn = document.getElementsByClassName("App")[0];
-//     direction = "Top";
-//   }
-//   let target = document.getElementById(
-//     this.viewManager.views[this.viewManager.currentViewIndex].id
-//   );
-
-//   let step = (target["offset" + direction] - ctn["scroll" + direction]) / 500;
-
-//   let baseScroll = ctn["scroll" + direction];
-//   animate((r) => {
-//     if (direction == "Top")
-//       window.scrollTo(0, baseScroll + r * step + target.parentNode.offsetTop);
-//     else ctn["scroll" + direction] = baseScroll + r * step;
-//   }, 500);
-// };
