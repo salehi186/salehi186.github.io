@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import "./index.css";
 import { Marquee } from "../Marquee";
 
-export const Toolbar = ({ home, back, next }) => {
+export const Toolbar = ({ home, back, next, news = [] }) => {
   return (
     <nav className="Toolbar">
       <ul>
@@ -31,19 +31,9 @@ export const Toolbar = ({ home, back, next }) => {
       ></span>
       RECENT ACTIVITY:
       <Marquee>
-        <span>Personel Evaluation Management System (Asp.net, C#, Ajax)</span>
-        <span>
-          Interactive Help -Website online tour (Simulation of Office2007 Merlin
-          help by diffrent characters)
-        </span>
-        <span>Strategic Enterprise Management (Asp.net, C#)</span>
-        <span>Business Process Management (Asp.net, C#)</span>
-        <span>
-          Jquery Spotlight Pluggin Interactive Help -Website online tour
-          (Simulation of Office2007 Merlin help by diffrent characters)
-        </span>
-        <span>Asp.net Insertable/filterable Grid Extender</span>
-        <span>Asp.net PersianCalendar Component</span>
+        {news.map((n) => (
+          <span>{n}</span>
+        ))}
       </Marquee>
     </nav>
   );

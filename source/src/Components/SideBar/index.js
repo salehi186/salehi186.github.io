@@ -9,7 +9,7 @@ export const SideBar = ({ viewLinks, onClick }) => {
       <aside className="hs-menu" id="hs-menu">
         <div className="profile_info">
           <h1>AliAkbar Salehi</h1>
-          <h4>WEB DESIGNER</h4>
+          <h4>Software Developer</h4>
           <h6>
             <span className="fa fa-location-arrow"></span>
             &nbsp;&nbsp;&nbsp;GERMANY , BERLIN

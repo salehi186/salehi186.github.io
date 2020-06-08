@@ -45,15 +45,22 @@ const App = () => {
   const [posts, setPosts] = useState([]);
   useEffect(() => {
     const fetchData = async () => {
-      let res = await fetch(
-        "https://gist.githubusercontent.com/salehi186/5217acfd1df972ecb8e5812b4142c18e/raw/1401e9844771d0e4cc11edc287ed8a15e7a82a46/salehi186.db.json"
-      );
-      setData(await res.json());
-
       let postsRes = await fetch(
-        "https://api.github.com/users/salehi186/gists"
+        "https://dev.to/api/articles?username=salehi186"
       );
-      setPosts((await postsRes.json()).filter((p) => p.description));
+      let _posts = await postsRes.json();
+      let gistsRes = await fetch(
+        `https://api.github.com/users/salehi186/gists`
+      );
+      let gists = await gistsRes.json();
+      setPosts(_posts);
+      debugger;
+      const dataGist = gists.find((p) => p.files["salehi186.db.json"]);
+      let res = await fetch(dataGist.files["salehi186.db.json"].raw_url);
+      setData(await res.json());
+      setTimeout(() => {
+        window.WPac && window.WPac.init([{ widget: "Comment", id: 25558 }]);
+      }, 1000);
     };
     fetchData();
   }, []);
@@ -77,6 +84,7 @@ const App = () => {
         next={() => scrollTo(currentSection, 1)}
         back={() => scrollTo(currentSection, -1)}
         home={() => scrollTo("ProfileSection")}
+        news={data.news || []}
       />
       <div className="main-container">
         <SideBar
@@ -108,8 +116,8 @@ const App = () => {
                 <h3>BIO</h3>
                 <h4>ABOUT ME</h4>
                 <p>
-                  Solutions-driven programmer with an eight-year track record of
-                  commended performance in modular and object-oriented
+                  Solutions-driven programmer with an eleven-years track record
+                  of commended performance in modular and object-oriented
                   programming. Well-versed in all phases of the software
                   development life-cycle, with a strong working knowledge of
                   algorithms and data structures. Proven success engineering
@@ -256,16 +264,16 @@ const App = () => {
           <Section Id="Posts" Name="Posts">
             {posts.length ? (
               posts.map((post) => {
-                const texts = post.description.split("#");
-                const title = texts.splice(0, 1);
                 return (
-                  <Post key={v4()}
+                  <Post
+                    key={posts.id}
                     body={
                       <div>
-                        <h4> {title}</h4>
+                        <h4> {post.title}</h4>
                         <ul>
-                          {texts.map((t) => (
-                            <li key={v4()}
+                          {post.tag_list.map((t) => (
+                            <li
+                              key={v4()}
                               style={{
                                 display: "inline-block",
                                 border: "solid whitesmoke 1px",
@@ -285,7 +293,7 @@ const App = () => {
                       </div>
                     }
                     head={new Date(post.updated_at).toLocaleString()}
-                    link={post.html_url}
+                    link={post.url}
                   />
                 );
               })
@@ -310,6 +318,10 @@ const App = () => {
                 </span>
               </a>
             </fieldset>
+            <hr />
+            your Comment:
+            <hr />
+            <div id="wpac-comment"></div>
           </Section>
         </div>
       </div>

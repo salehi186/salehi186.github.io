@@ -19,13 +19,13 @@ export class Profile extends Component
 
                     <h1>AliAkbar Salehi</h1>
 
-                    <h2>Web Developer</h2>
+                    <h2>Software Developer</h2>
                 </header>
 
                 <div className="profile-bio">
                     <p>Welcome ...</p>
-                    <p>I am a full stack web developer. I mainly work with HTML, CSS, JS, React and
-                        Asp.net.
+                    <p>I am a full stack Software Developer. I mainly work with HTML, CSS, JS, React and
+                        NodeJS
                         <br/>I also play well with Photoshop and other cool stuff.</p>
 
                     <ul className="profile-social-links">

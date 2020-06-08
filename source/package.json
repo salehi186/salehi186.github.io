@@ -22,9 +22,12 @@
     "devstart": "node debug.js && react-scripts start",
     "start-js": "react-scripts start",
     "start": "npm-run-all -p watch-css start-js",
-    "build": "npm run build-css && react-scripts build",
+    "build": "yarn compile && yarn clean && yarn cp",
     "test": "react-scripts test --env=jsdom",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "clean": "cd ..; ls -d $PWD/* | grep  -v source | xargs rm -rf",
+    "cp": "cp -R build/* ../",
+    "compile": "npm run build-css && react-scripts build"
   },
   "author": "Ionut-Cristian Florescu <ionut.florescu@gmail.com>",
   "license": "ISC",
