@@ -1,10 +1,9 @@
 import React from "react";
 import "./index.css";
-export const Post = ({ head, body, link }) => {
+export const Post = ({ content, link }) => {
   return (
     <div className="post">
-      {head}
-      <h3>{body}</h3>
+      {content}
       <a href={link} target="_blank">
         read more
       </a>

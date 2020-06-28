@@ -8,6 +8,7 @@ import { Marquee } from "./Components/Marquee";
 import { Post } from "./Components/Post";
 import { v4 } from "uuid";
 import { Negros as Loading } from "react-explode";
+import axios from "axios";
 import "./App.css";
 
 window.addEventListener("hashchange", function (e) {
@@ -45,16 +46,13 @@ const App = () => {
   const [posts, setPosts] = useState([]);
   useEffect(() => {
     const fetchData = async () => {
-      let postsRes = await fetch(
-        "https://dev.to/api/articles?username=salehi186"
-      );
-      let _posts = await postsRes.json();
-      let gistsRes = await fetch(
-        `https://api.github.com/users/salehi186/gists`
-      );
-      let gists = await gistsRes.json();
+      let _posts = (
+        await axios.get("https://dev.to/api/articles?username=aliakbar_salehi")
+      ).data;
+      let gists = (
+        await axios.get(`https://api.github.com/users/salehi186/gists`)
+      ).data;
       setPosts(_posts);
-      debugger;
       const dataGist = gists.find((p) => p.files["salehi186.db.json"]);
       let res = await fetch(dataGist.files["salehi186.db.json"].raw_url);
       setData(await res.json());
@@ -132,7 +130,6 @@ const App = () => {
               </div>
             </div>
           </Section>
-
           <Section Id="SkillSection" Name="Skills">
             <div className="skillContainer">
               {data.skills.map((itm, itmIdx) => (
@@ -162,7 +159,6 @@ const App = () => {
               ))}
             </div>
           </Section>
-
           <Section Id="ResumeSection" Name="Resume" className="resume-section">
             <div className="resume-section">
               <ul className="resume">
@@ -212,64 +208,22 @@ const App = () => {
               </ul>
             </div>
           </Section>
-
-          <Section Id="TeamSection" Name="Friends">
-            <div className="TeamList">
-              {data.friends.map((p) => (
-                <FlipCard Width="96%" Height="350px" key={v4()}>
-                  <Card>
-                    <div
-                      className="frontWrapper"
-                      style={{
-                        filter: "grayscale(70%)",
-                        backgroundImage: "url('" + p.imageURL + "')",
-                        width: "100%",
-                        height: "100%",
-                      }}
-                    >
-                      <div className="front-detail">
-                        <h4>{p.Name}</h4>
-                        <h3>{p.job}</h3>
-                      </div>
-                    </div>
-                  </Card>
-                  <Card>
-                    <div
-                      className="backWrapper"
-                      style={{
-                        backgroundImage: "url('" + p.imageURL + "')",
-                        width: "100%",
-                        height: "100%",
-                      }}
-                    >
-                      <div className="front-detail">
-                        <p>{p.Description}</p>
-
-                        <div className="social-icons ">
-                          <a href={p.linkedin} target="_blank">
-                            <span className="fa fa-linkedin"></span>
-                          </a>
-                          &nbsp;&nbsp;
-                          <a href={p.facebook}>
-                            <span className="fa fa-facebook"></span>
-                          </a>
-                        </div>
-                      </div>
-                    </div>
-                  </Card>
-                </FlipCard>
-              ))}
-            </div>
-          </Section>
           <Section Id="Posts" Name="Posts">
             {posts.length ? (
               posts.map((post) => {
                 return (
                   <Post
                     key={posts.id}
-                    body={
+                    content={
                       <div>
-                        <h4> {post.title}</h4>
+                        <img
+                          src={post.cover_image}
+                          width="100%"
+                          height="100px"
+                        />
+
+                        <h3> {post.title}</h3>
+                        <p> {post.description}</p>
                         <ul>
                           {post.tag_list.map((t) => (
                             <li
@@ -292,7 +246,6 @@ const App = () => {
                         </ul>
                       </div>
                     }
-                    head={new Date(post.updated_at).toLocaleString()}
                     link={post.url}
                   />
                 );
